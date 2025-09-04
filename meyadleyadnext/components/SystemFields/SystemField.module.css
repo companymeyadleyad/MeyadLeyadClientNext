@@ -1,0 +1,55 @@
+.systemFieldGroup {
+  width: 100%;
+}
+
+.systemField {
+  width: 100%;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .systemFieldGroup {
+    max-width: 100%;
+  }
+  .systemField {
+    max-width: 100%;
+  }
+}
+
+/* Hover effects on desktop */
+@media (hover: hover) {
+  .systemField input:hover,
+  .systemField textarea:hover,
+  .systemField select:hover {
+    border-color: var(--site-primary-light);
+    box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+    transform: translateY(-1px);
+  }
+}
+
+/* Focus (also mobile) */
+.systemField input:focus,
+.systemField textarea:focus,
+.systemField select:focus {
+  outline: none;
+  border-color: var(--site-primary);
+  box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Active */
+.systemField input:active,
+.systemField textarea:active,
+.systemField select:active {
+  transform: scale(0.98);
+  transition: transform 0.1s;
+}
+
+/* Rounded inputs */
+.systemField input,
+.systemField select {
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}

@@ -1,0 +1,33 @@
+/* AdPostingForm.module.css */
+
+.stepsFormContainer {
+  width: 100%;
+  /* this replaces the old `.card` rules so it only affects this card */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.stepsFormContainer:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Make form fields narrower on desktop */
+@media (min-width: 768px) {
+  .stepsFormContainer {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* narrow inner form */
+  .stepsFormContainer form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* if you need to affect Bootstrap descendants, use :global */
+  .stepsFormContainer :global(.form-group),
+  .stepsFormContainer :global(.form-control),
+  .stepsFormContainer :global(.form-check) {
+    max-width: 100%;
+  }
+}

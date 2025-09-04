@@ -1,0 +1,456 @@
+/* מחלקות "דגל" רק כדי ש-CSS Modules ייצאו אותן */
+.open {}
+.submenu-item {}
+
+/* עיצוב לפופ-אפ */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-top: 30px;
+  transition: left 0.5s ease-in-out, visibility 0s 0.5s;
+  visibility: hidden;
+}
+/* כאשר הפופ-אפ פתוח, נעבור את ה-left ל-0 */
+.mobile-menu-overlay.open {
+  left: 0;
+  visibility: visible;
+  transition: left 0.5s ease-in-out;
+}
+
+/* עיצוב לתוכן הפופ-אפ */
+.mobile-menu-content {
+  position: relative;
+  background: #fff;
+  padding: 24px 0 0 0;
+  width: 90%;
+  max-width: 340px;
+  min-height: 80vh;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(80, 80, 160, 0.18);
+  overflow-y: auto;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* מיקום האיקס בתוך הפופ-אפ */
+.close-icon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #222;
+  z-index: 2;
+  transition: color 0.2s;
+}
+/* שינוי צבע האיקס בהובר */
+.close-icon:hover {
+  color: var(--site-primary, #ff9800);
+}
+/* אפקט פתיחה של תתי קטגוריות */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+.submenu.open {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* רווח בין האייקון לתוכן בפופ-אפ */
+.content-spacing {
+  height: 18px;
+}
+
+/* עיצוב עבור כל קטגוריה */
+.category-item {
+  width: 100%;
+  padding: 0.7rem 0 0.7rem 0;
+  border-bottom: 1.5px dotted #e0e0e0;
+  font-size: 1.08rem;
+  color: #222;
+  font-weight: 500;
+  background: transparent;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.category-item:last-child {
+  border-bottom: none;
+}
+
+/* עיצוב תוכן הקטגוריה (שם + אייקון) */
+.category-content {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* אייקון מצד ימין */
+.category-icon {
+  font-size: 1.1rem;
+  color: #bbb;
+}
+
+/* שם הקטגוריה */
+.category-title {
+  margin-right: 10px;
+  font-size: 1.08rem;
+  color: #222;
+}
+
+/* פופאפ התחברות/הרשמה - overlay */
+.mobile-auth-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.mobile-auth-modal {
+  background: #fff;
+  border-radius: 18px;
+  width: 95vw;
+  max-width: 420px;
+  box-shadow: 0 8px 32px rgba(80, 80, 160, 0.18);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInScale 0.3s;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.mobile-auth-modal-header {
+  background: var(--site-primary);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.6rem 1rem 0.6rem 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-auth-modal-header span {
+  flex: 1;
+  text-align: center;
+}
+
+.mobile-auth-modal-close {
+  position: static;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.2s;
+  margin-left: 0.5rem;
+}
+.mobile-auth-modal-close:hover {
+  color: #ffd6fa;
+}
+
+.mobile-auth-modal-body {
+  padding: 2.2rem 1.2rem 2.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-auth-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.mobile-auth-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+  color: #222;
+}
+
+.mobile-auth-btn {
+  width: 90%;
+  max-width: 340px;
+  height: 54px;
+  min-height: 54px;
+  border-radius: 2.5rem;
+  background: var(--site-primary);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 2px 8px rgba(80, 80, 160, 0.08);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-auth-btn:hover {
+  background: var(--site-primary-dark);
+}
+
+.mobile-auth-divider {
+  width: 80%;
+  border: none;
+  border-top: 2px solid var(--site-primary);
+  margin: 1.2rem 0 1.2rem 0;
+}
+
+.mobile-auth-social {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.mobile-auth-social-label {
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+}
+
+.mobile-auth-social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.mobile-auth-social-btn {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border: 1.5px solid #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.mobile-auth-social-btn:hover {
+  border: 1.5px solid var(--site-primary);
+  box-shadow: 0 2px 8px rgba(80, 80, 160, 0.1);
+}
+
+.mobile-auth-social-labels {
+  display: flex;
+  gap: 2.5rem;
+  width: 80%;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #888;
+  margin-top: 0.2rem;
+}
+
+/* --- Login/Register button --- */
+.mobile-login-btn {
+  width: 100%;
+  background: #ffb32c;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.13rem;
+  border-radius: 12px;
+  border: none;
+  padding: 0.95rem 0;
+  margin: 0 0 18px 0;
+  box-shadow: 0 2px 8px rgba(80,80,160,0.08);
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-login-btn:hover {
+  background: #ffa500;
+  color: #fff;
+}
+
+/* --- Menu items (Nav) --- */
+.mobile-menu-content :global(.nav) {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+/* --- Social icons row --- */
+.mobile-menu-social-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.3rem;
+  margin: 2.2rem 0 1.2rem 0;
+}
+.mobile-menu-social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--site-primary, #ff9800);
+  border: 1.5px solid #e0e0e0;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.mobile-menu-social-icon:hover {
+  background: var(--site-primary-light, #ffe0b2);
+  color: #fff;
+  border: 1.5px solid var(--site-primary, #ff9800);
+}
+
+/* --- Google Play badge --- */
+.mobile-menu-google-play {
+  display: flex;
+  justify-content: center;
+  margin: 1.2rem 0 1.2rem 0;
+}
+.google-play-badge {
+  width: 140px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(80,80,160,0.08);
+}
+
+@media (max-width: 480px) {
+  .mobile-auth-modal {
+    max-width: 89vw;
+    border-radius: 0;
+  }
+  .mobile-auth-modal-header {
+    padding-right: 0.5rem;
+    padding-left: 2.2rem;
+    font-size: 1.1rem;
+  }
+  .mobile-auth-modal-body {
+    padding: 1.2rem 0.2rem 1.2rem 0.2rem;
+  }
+  .mobile-menu-content {
+    max-width: 99vw;
+    border-radius: 0;
+    padding: 10px 0 0 0;
+    border-radius: 5px;
+  }
+  .mobile-login-btn {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+    margin: 0 8px 14px 8px;
+  }
+  .google-play-badge {
+    width: 110px;
+  }
+}
+
+.mobile-menu-top-btn {
+  width: 100%;
+  background: var(--site-primary);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.13rem;
+  border-radius: 12px;
+  border: none;
+  margin: 18px 0;
+  box-shadow: 0 2px 8px rgba(80,80,160,0.08);
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s;
+  position: relative;
+  z-index: 3;
+}
+.mobile-menu-top-btn:hover {
+  background: #ffa500;
+  color: #fff;
+}
+
+.mobile-menu-publish-btn {
+  width: 100%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.13rem;
+  border-radius: 12px;
+  border: none;
+  margin: 18px 0;
+  box-shadow: 0 2px 8px rgba(80,80,160,0.08);
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s;
+  position: relative;
+  z-index: 3;
+}
+.mobile-menu-publish-btn:hover {
+  background: #ffa500;
+  color: #fff;
+}
+
+.mobile-menu-inner-container {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 38px;
+}
+
+.mobile-menu-logout-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #222;
+  font-size: 1.08rem;
+  font-weight: 500;
+  text-align: right;
+  padding: 0.85rem 0;
+  border-top: 1.5px dotted #e0e0e0;
+  border-bottom: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.mobile-menu-logout-btn:hover {
+  color: var(--site-primary, #ffb32c);
+  background: #f9f9f9;
+}
+
+.logout-icon {
+  margin-left: 8px;
+  font-size: 1.1em;
+  vertical-align: middle;
+  color: #bbbbbb;
+}
+

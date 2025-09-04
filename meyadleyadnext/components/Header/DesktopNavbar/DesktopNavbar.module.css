@@ -1,0 +1,211 @@
+/* ====== HEADER (Navbar) ====== */
+.headerNavbar {
+  background: var(--site-primary) !important;
+  border-bottom: none;
+  box-shadow: none !important;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.brandLogo :global(img) {
+  height: 40px;
+  width: auto;
+  margin-left: 24px;
+}
+
+.categoryNav {
+  display: flex;
+  align-items: center;
+}
+
+/* קישורי ניווט עליונים */
+.categoryNav :global(.nav-link),
+.categoryNav :global(.dropdown-toggle) {
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  font-size: 1rem;
+  background: none !important;
+  border: none !important;
+  padding: 0 12px !important;
+  transition: color 0.2s;
+}
+
+.categoryNav :global(.nav-link:hover),
+.categoryNav :global(.dropdown-toggle:hover),
+.categoryNav :global(.nav-link.active),
+.categoryNav :global(.dropdown-toggle.active) {
+  color: #e0b96a !important;
+}
+
+/* מפריד קטן (אם תרצי להשתמש בו) */
+.separator {
+  width: 5px;
+  height: 5px;
+  background-color: #888;
+  border-radius: 50%;
+  margin: 0 10px;
+  align-self: center;
+}
+
+/* ====== DROPDOWN ====== */
+.customDropdown {}
+
+.customDropdown :global(.dropdown-toggle)::after {
+  display: none !important;
+}
+
+.customDropdown :global(.dropdown-menu) {
+  display: block;
+  margin-top: 0;
+  width: 150px;
+  text-align: right !important;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s ease-in-out;
+}
+
+.customDropdown :global(.dropdown-menu.show) {
+  visibility: visible;
+  opacity: 1;
+}
+
+.customDropdown :global(.dropdown-menu .dropdown-item) {
+  color: #333;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.customDropdown :global(.dropdown-menu .dropdown-item::before) {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, var(--site-primary-light), var(--site-primary-dark));
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+}
+
+.customDropdown :global(.dropdown-menu .dropdown-item:hover::before) {
+  left: 0;
+}
+
+.customDropdown :global(.dropdown-menu .dropdown-item:hover) {
+  color: #fff;
+  transform: scale(1.07);
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1200px) {
+  .categoryNav { gap: 18px; }
+  .brandLogo :global(img) { margin-left: 12px; }
+}
+
+@media (max-width: 576px) {
+  .headerNavbar {
+    min-height: 56px;
+    padding: 0 8px !important;
+    flex-wrap: nowrap;
+  }
+  .brandLogo :global(img) {
+    height: 32px !important;
+    margin-left: 8px !important;
+  }
+}
+
+/* ====== USER MENU (Popup) ====== */
+.userMenuContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--site-primary-light);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.userAvatar:hover { transform: scale(1.05); }
+
+.avatarCircle {
+  width: 30px;
+  height: 30px;
+  background-color: var(--site-primary-light);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.userMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0;
+  min-width: 180px;
+  max-width: 90vw;
+  z-index: 1000;
+  border: 1px solid rgba(0,0,0,0.1);
+  direction: rtl;
+  text-align: right;
+}
+
+.userMenu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 24px;
+  width: 16px; height: 16px;
+  transform: rotate(45deg);
+  background: #fff;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem;
+  color: #333;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+  text-align: right;
+}
+.menuItem:hover {
+  background-color: var(--site-primary-light);
+  color: #fff;
+}
+
+.menuIcon {
+  margin-left: 8px;
+  font-size: 1.1rem;
+  color: var(--site-primary);
+  transition: color 0.2s;
+}
+.menuItem:hover .menuIcon { color: #fff; }

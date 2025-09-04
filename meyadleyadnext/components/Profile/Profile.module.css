@@ -1,0 +1,64 @@
+/* components/Profile/Profile.module.css */
+
+.profileContainer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  min-height: calc(100vh - 200px);
+}
+
+.profileCard {
+  border: none;
+  box-shadow: 0 4px 16px rgba(80, 80, 160, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.profileHeader {
+  background: linear-gradient(
+    90deg,
+    var(--site-primary),
+    var(--site-primary-light)
+  );
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: none;
+}
+
+.profileHeader h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.cardBody {
+  padding: 2rem 1.5rem;
+}
+
+.profileFields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* אם ה-Form Controls של SystemField מגיעים מ-bootstrap,
+   הסלקטורים הבאים יפעלו כי הם בתוך האזור */
+.profileFields :global(.form-label) {
+  font-weight: 600;
+  color: #333;
+}
+
+.profileFields :global(.form-control) {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.profileFields :global(.form-control:read-only) {
+  cursor: default;
+  background: #f4f4f4;
+}

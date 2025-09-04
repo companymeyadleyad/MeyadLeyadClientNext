@@ -1,0 +1,175 @@
+/* app/globals.css */
+
+/* ספריות גלובליות */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "@fortawesome/fontawesome-svg-core/styles.css";
+
+/* --- משתני צבע/טיפוגרפיה/Spacing שלך --- */
+:root {
+  /* צבעים שולטים באתר - סגול */
+  --site-primary: #192d45;
+  --site-primary-light: #26466d;
+  --site-primary-lighter: #d1c4e9;
+  --site-primary-dark: #113158;
+  --site-primary-darker: #4527a0;
+  --site-primary-gradient: linear-gradient(135deg, var(--site-primary) 0%, var(--site-primary-dark) 100%);
+
+  /* צבעים */
+  --primary-color: #28a745;
+  --primary-hover: #218838;
+  --primary-light: #d4edda;
+  --primary-dark: #1e7e34;
+
+  /* צבעים נוספים */
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+
+  /* רקעים */
+  --background-color: #ffffff;
+  --background-alt: #f8f9fa;
+  --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+  /* טקסט */
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --text-light: #f8f9fa;
+  --text-on-primary: #ffffff;
+
+  /* מרווחים */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 3rem;
+
+  /* גופנים */
+  --font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+
+  /* גבולות/צללים/מעברים/מידות/z-index ... */
+  --border-radius: 0.25rem;
+  --border-color: #dee2e6;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 1rem;
+  --border-radius-circle: 50%;
+
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+  --shadow-md: 0 0.5rem 1rem rgba(0,0,0,.15);
+  --shadow-lg: 0 1rem 3rem rgba(0,0,0,.175);
+  --shadow-primary: 0 0.5rem 1rem rgba(111,66,193,.3);
+
+  --transition-fast: .15s ease-in-out;
+  --transition-normal: .3s ease-in-out;
+  --transition-slow: .5s ease-in-out;
+
+  --header-height: 4rem;
+  --footer-height: 3rem;
+  --sidebar-width: 250px;
+  --container-max-width: 1200px;
+
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+}
+
+/* אפשר להישאר עם @import לפונט, אבל עדיף next/font (ראו למטה) */
+/* @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap"); */
+
+/* בסיס */
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  direction: rtl;
+}
+.nav-footer-spacing {
+  flex: 1;
+  padding: 2rem 0; /* מוסיף ריווח נוסף מלמעלה ומלמטה */
+}
+/* כדי שהקומפוננטות שלנו ייראו כמו ב-CRA (לדוגמה זה שדה שהשתמשת בו) */
+.custom-form-control {
+  border: 0;
+  border-bottom: 3px solid var(--site-primary);
+  border-radius: 0;
+  transition: all .3s ease;
+  background-color: #c2b6b640;
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* כפתורי Bootstrap כלליים */
+.btn-success,
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  font-size: 13px;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  background: var(--site-primary-light);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.btn-success::before,
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, var(--site-primary-light), var(--site-primary-dark));
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+}
+.btn-success:hover::before,
+.btn-primary:hover::before { left: 0; }
+.btn-success:active,
+.btn-primary:active { transform: scale(0.95); box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+
+/* Toggler של ה-Navbar */
+.navbar-toggler {
+  border-color: #fff !important;
+  box-shadow: none;
+}
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff;
+}
+.navbar-toggler-icon {
+  background-image: none !important;
+  position: relative;
+  width: 1.5em; height: 1.5em;
+  display: inline-block;
+}
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon span {
+  content: '';
+  display: block;
+  height: 2px; width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  margin: 5px 0;
+}
+.navbar-toggler-icon span { margin: 0; }
