@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Nav, NavDropdown, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faHome, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { observer } from "mobx-react-lite";
 
 import { categoriesStore } from "@/stores/Categories.store";

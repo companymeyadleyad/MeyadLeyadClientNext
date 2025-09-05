@@ -28,15 +28,15 @@ const listGroupStyles: React.CSSProperties = {
 };
 
 // Focus styles (אם תרצי להשתמש)
-const focusStyles: React.CSSProperties = {
-  borderBottom: "3px solid var(--site-primary-light)",
-};
+// const focusStyles: React.CSSProperties = {
+//   borderBottom: "3px solid var(--site-primary-light)",
+// };
 
 interface BaseFieldProps {
   label: string;
   name: string;
-  value: any;
-  onChange: (value: any) => void;
+  value: unknown;
+  onChange: (value: unknown) => void;
   error?: string;
   placeholder?: string;
   required?: boolean;
@@ -65,7 +65,7 @@ export const TextField: React.FC<BaseFieldProps> = ({
       <Form.Control
         type="text"
         name={name}
-        value={value}
+        value={value as string}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder ? t(placeholder) : ""}
         isInvalid={!!error}
@@ -108,7 +108,7 @@ export const NumberField: React.FC<
         inputMode="numeric"
         pattern="[0-9]*"
         name={name}
-        value={value}
+        value={value as string}
         onChange={(e) => {
           // שומר רק ספרות
           const numericValue = e.target.value.replace(/[^0-9]/g, "");
@@ -147,7 +147,7 @@ export const SelectField: React.FC<
       </Form.Label>
       <Form.Select
         name={name}
-        value={value}
+        value={value as string}
         onChange={(e) => onChange(e.target.value)}
         isInvalid={!!error}
         disabled={disabled}
@@ -180,11 +180,11 @@ export const CheckboxField: React.FC<Omit<BaseFieldProps, "placeholder">> = ({
   const { t } = useTranslation();
 
   return (
-    <FeatureCheckbox
-      name={name}
-      label={label}
-      value={value}
-      onChange={onChange}
+          <FeatureCheckbox
+        name={name}
+        label={label}
+        value={value as boolean}
+        onChange={onChange}
       required={required}
       error={error}
       disabled={disabled ?? false}
@@ -251,7 +251,7 @@ export const TextareaField: React.FC<BaseFieldProps & { rows?: number }> = ({
         as="textarea"
         rows={rows}
         name={name}
-        value={value}
+        value={value as string}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder ? t(placeholder) : ""}
         isInvalid={!!error}
@@ -289,7 +289,7 @@ export const PriceField: React.FC<BaseFieldProps & { currency?: string }> = ({
         <Form.Control
           type="number"
           name={name}
-          value={value}
+          value={value as string}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder ? t(placeholder) : ""}
           isInvalid={!!error}
@@ -330,7 +330,7 @@ export const PhoneField: React.FC<BaseFieldProps> = ({
         <Form.Control
           type="tel"
           name={name}
-          value={value}
+          value={value as string}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder ? t(placeholder) : ""}
           isInvalid={!!error}
@@ -436,7 +436,7 @@ export const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
         <Form.Control
           type="text"
           name={name}
-          value={inputValue}
+          value={inputValue as string}
           onChange={handleInputChange}
           onBlur={handleBlur}
           placeholder={placeholder ? t(placeholder) : ""}
@@ -491,14 +491,13 @@ export const AutocompleteField: React.FC<AutocompleteFieldProps> = ({
 };
 
 // List Group Field
-interface ListGroupFieldProps extends BaseFieldProps {
+interface ListGroupFieldProps extends Omit<BaseFieldProps, 'name'> {
   items: { value: string | number; label: string }[];
   onItemClick: (value: string | number) => void;
 }
 
 export const ListGroupField: React.FC<ListGroupFieldProps> = ({
   label,
-  name,
   value,
   onChange,
   error,
@@ -603,7 +602,7 @@ export const PasswordField: React.FC<BaseFieldProps> = ({
         <Form.Control
           type={showPassword ? "text" : "password"}
           name={name}
-          value={value}
+          value={value as string}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder ? t(placeholder) : ""}
           isInvalid={!!error}

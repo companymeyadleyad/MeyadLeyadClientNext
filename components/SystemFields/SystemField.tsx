@@ -20,7 +20,7 @@ interface SystemFieldProps {
   label: string;
   name: string;
   value: string | boolean | number;
-  onChange: (value: any) => void;
+  onChange: (value: unknown) => void;
   placeHolder?: string;
   required?: boolean;
   options?: SelectOption[];
@@ -146,7 +146,6 @@ const SystemField: React.FC<SystemFieldProps> = ({
         return (
           <ListGroupField
             label={label}
-            name={name}
             value={String(value ?? "")}
             onChange={onChange}
             items={options}

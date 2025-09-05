@@ -14,7 +14,7 @@ const Profile: React.FC = observer(() => {
 
   if (!user) return null;
 
-  const handleChange = (fieldName: string) => (value: any) => {
+  const handleChange = (fieldName: string) => (value: unknown) => {
     // השדות כאן לקריאה בלבד בפועל – נשאיר לוג הדגמה
     console.log(`Field ${fieldName} changed to:`, value);
   };

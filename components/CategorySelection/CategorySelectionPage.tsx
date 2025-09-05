@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/navigation";
 import { Container, Spinner } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 import { categoriesStore } from "@/stores/Categories.store";
@@ -56,7 +55,7 @@ const CategorySelectionPage = observer(function CategorySelectionPage() {
 
   // Map category numbers to icons (adjust as you wish)
   const getCategoryIcon = (categoryNumber: number) => {
-    const iconMap: Record<number, any> = {
+    const iconMap: Record<number, typeof faHome> = {
       1: faHome,
       2: faHome,
       3: faHome,

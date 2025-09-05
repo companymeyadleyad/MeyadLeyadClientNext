@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ProtectedClientRoute from "@/components/Auth/ProtectedClientRoute";
 import { PropertyService } from "@/services/propertyService";
 import styles from "./BusinessPosting.module.css";
@@ -55,15 +56,15 @@ function CardElement({ property }: { property: Property }) {
       <div className={styles.infoLayout}>
         <div className={`${styles.infoSection} ${styles.right}`}>
           <div>
-            <img src="/icons/home.svg" alt="Rooms" className={styles.infoIcon} />
+            <Image src="/icons/home.svg" alt="Rooms" width={16} height={16} className={styles.infoIcon} />
             חדרים: {property.numberOfRoomsName}
           </div>
           <div>
-            <img src="/icons/stairs.svg" alt="Floor" className={styles.infoIcon} />
+            <Image src="/icons/stairs.svg" alt="Floor" width={16} height={16} className={styles.infoIcon} />
             קומה: {property.floor}
           </div>
           <div>
-            <img src="/icons/area.svg" alt="Size" className={styles.infoIcon} />
+            <Image src="/icons/area.svg" alt="Size" width={16} height={16} className={styles.infoIcon} />
             גודל: {property.propertySizeInMeters} מ&quot;ר
           </div>
         </div>
@@ -106,7 +107,7 @@ function BusinessPostingInner() {
       const svc = new PropertyService();
       const groups = await svc.getPropertiesList();
       if (groups && Array.isArray(groups)) {
-        const cats: CategoryData[] = groups.map((g: any) => ({
+        const cats: CategoryData[] = groups.map((g: { categoryId: number; categoryName: string; properties: Property[] }) => ({
           categoryId: g.categoryId,
           categoryName: g.categoryName,
           elements: g.properties as Property[],
@@ -119,10 +120,9 @@ function BusinessPostingInner() {
         if (imgs) insertImagesForCategories(imgs, cats);
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const insertImagesForCategories = (images: any[], initial: CategoryData[]) => {
+  const insertImagesForCategories = (images: { imgId: number; imageData: string; indices: number[] }[], initial: CategoryData[]) => {
     const updated = [...initial];
 
     images.forEach((img) => {
@@ -258,7 +258,7 @@ function BusinessPostingInner() {
       // reload
       const groups = await svc.getPropertiesList();
       if (groups && Array.isArray(groups)) {
-        const cats: CategoryData[] = groups.map((g: any) => ({
+        const cats: CategoryData[] = groups.map((g: { categoryId: number; categoryName: string; properties: Property[] }) => ({
           categoryId: g.categoryId,
           categoryName: g.categoryName,
           elements: g.properties as Property[],
@@ -279,9 +279,10 @@ function BusinessPostingInner() {
   try {
     // use the bundled build so html2canvas + jsPDF are included
     const mod = await import("html2pdf.js/dist/html2pdf.bundle.min.js");
-    const html2pdf = (mod as any).default || (mod as any);
+    const html2pdf = (mod as { default?: unknown }).default || mod;
 
-    await html2pdf()
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await (html2pdf as any)()
       .set({
         margin: [0, 0, 0, 0],
         filename: "business-posting.pdf",
@@ -381,10 +382,11 @@ function BusinessPostingInner() {
                 boxSizing: "border-box",
               }}
             >
-              <img
+              <Image
                 src={imgObj.imageUrl}
                 alt=""
-                style={{ width: "100%", height: "100%", objectFit: "cover", pointerEvents: "none" }}
+                fill
+                style={{ objectFit: "cover", pointerEvents: "none" }}
               />
               {!isGeneratingPdf && (
                 <button
@@ -467,7 +469,7 @@ function BusinessPostingInner() {
         >
           <div style={{ width: "100%", borderBottom: "1px solid #1a3b6d", marginBottom: "5px" }} />
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
-            <img src="/images/logo6.png" alt="Logo" style={{ height: "40px" }} />
+            <Image src="/images/logo6.png" alt="Logo" width={120} height={40} />
             <div style={{ color: "#d4a373" }}>גליון 1</div>
             <div className={styles.headerLabelBg}>
               <span className={styles.headerLabel}>מכירה</span>

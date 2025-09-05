@@ -52,7 +52,7 @@ const AdPostingForm: React.FC = observer(function AdPostingForm() {
     return <div>Loading categories...</div>;
   }
 
-  const validateField = (fieldName: string, value: any): string | undefined => {
+  const validateField = (fieldName: string, value: unknown): string | undefined => {
     const currentFields = (categoriesStore.levels[currentStep]?.fields || []) as Field[];
     const field = currentFields.find((f) => f.name === fieldName);
     if (!field) return undefined;
@@ -69,7 +69,7 @@ const AdPostingForm: React.FC = observer(function AdPostingForm() {
     return undefined;
   };
 
-  const handleChange = (fieldName: string) => (value: any) => {
+  const handleChange = (fieldName: string) => (value: unknown) => {
     // עדכון MobX בלי להחליף רפרנס
     propertyStore.updateProperty({ [fieldName]: value } as Partial<AddPropertyModel>);
     setFieldValidation((prev) => ({
@@ -169,7 +169,7 @@ const AdPostingForm: React.FC = observer(function AdPostingForm() {
               label={field1.label}
               name={field1.name}
               value={
-                (propertyStore.propertyToAdd[field1.name as keyof AddPropertyModel] as any) ??
+                (propertyStore.propertyToAdd[field1.name as keyof AddPropertyModel] as string | number | boolean) ??
                 ""
               }
               onSearch={handleSearch}
@@ -189,7 +189,7 @@ const AdPostingForm: React.FC = observer(function AdPostingForm() {
                 label={field2.label}
                 name={field2.name}
                 value={
-                  (propertyStore.propertyToAdd[field2.name as keyof AddPropertyModel] as any) ??
+                  (propertyStore.propertyToAdd[field2.name as keyof AddPropertyModel] as string | number | boolean) ??
                   ""
                 }
                 onSearch={handleSearch}

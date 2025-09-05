@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Container, Card, Button } from "react-bootstrap";
@@ -13,7 +13,7 @@ import { userStore } from "../../stores/User.store";
 import { UserService } from "../../services/userService";
 import { usePopup } from "../../components/Common/Popup/PopupContext";
 
-export default function LoginPage() {
+function LoginForm() {
   const [formData, setFormData] = useState<LoginRequest>({ email: "", password: "" });
   const router = useRouter();
   const search = useSearchParams();
@@ -29,8 +29,8 @@ export default function LoginPage() {
 
   const handleChange =
     (field: keyof LoginRequest) =>
-    (value: string) =>
-      setFormData((prev) => ({ ...prev, [field]: value }));
+    (value: unknown) =>
+      setFormData((prev) => ({ ...prev, [field]: value as string }));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -121,5 +121,13 @@ export default function LoginPage() {
         </Card>
       </div>
     </Container>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
