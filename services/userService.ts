@@ -8,11 +8,9 @@ import { RegisterResponse } from "../types/LoginAndRegister/Registration/Registe
 import { Authenticate, GetCurrentUser } from "../types/LoginAndRegister/Authenticate/Authenticate";
 import { User } from "@/types/User/User";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || ""; // לדוגמה: "https://api.example.com"
-
 export class UserService {
   async login(data: LoginRequest) {
-    const endpoint = `${API_BASE}/User/login`;
+    const endpoint = "/User/login";
     try {
       const response = await postData<LoginResponse>(endpoint, data);
       return response;
@@ -23,7 +21,7 @@ export class UserService {
   }
 
   async register(data: RegisterRequest) {
-    const endpoint = `${API_BASE}/User/registration`;
+    const endpoint = "/User/registration";
     try {
       const response = await postData<RegisterResponse>(endpoint, data);
       return response;
@@ -34,7 +32,7 @@ export class UserService {
   }
 
   async authenticate() {
-    const endpoint = `${API_BASE}/User/authenticate`;
+    const endpoint = "/User/authenticate";
     try {
       const response = await getData<Authenticate>(endpoint);
       return response;
@@ -45,7 +43,7 @@ export class UserService {
   }
 
   async getCurrentUser() {
-    const endpoint = `${API_BASE}/User/getCurrentUser`;
+    const endpoint = "/User/getCurrentUser";
     try {
       const response = await getData<GetCurrentUser>(endpoint);
       return response;
