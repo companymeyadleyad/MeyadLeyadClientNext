@@ -32,7 +32,7 @@ const MobileNavbar: React.FC<MobileNavbarProps> = observer(({ toggleMobileMenu }
     <Navbar
       expand="lg"
       bg="light"
-      variant="light"
+      variant="dark" 
       fixed="top"
       className={`d-flex d-lg-none ${styles.headerNavbar || ""}`}
     >

@@ -4,6 +4,7 @@ import "./globals.css";
 import { PopupProvider } from "@/components/Common/Popup/PopupContext";
 import Header from "@/components/Header/Header/Header";
 import AuthHydrator from "./_providers/AuthHydrator";
+import BottomNavBarGate from "@/components/_components/BottomNavBarGate";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
          <main className="container mt-4 nav-footer-spacing">
             {children}
           </main>
+          <BottomNavBarGate />
         </PopupProvider>
       </body>
     </html>

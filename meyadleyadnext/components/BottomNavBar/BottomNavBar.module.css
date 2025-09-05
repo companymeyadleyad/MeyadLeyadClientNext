@@ -1,0 +1,49 @@
+.bottomNavBar {
+  position: fixed;
+  bottom: 0;
+  left: 0; right: 0;
+  z-index: 1000;
+  background: #fff;
+  border-top: 1px solid #e6e6e6;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 8px 6px 10px;
+  /* Optional shadow */
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
+}
+
+.navItem {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 6px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color .2s ease, transform .1s ease;
+}
+
+.navItem:active {
+  transform: scale(0.98);
+}
+
+.navItem:hover {
+  color: var(--site-primary, #1a3b6d);
+}
+
+.navIcon {
+  display: block;
+}
+
+/* Hide on large screens (optional) */
+@media (min-width: 992px) {
+  .bottomNavBar {
+    display: none;
+  }
+}

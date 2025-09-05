@@ -1,26 +1,33 @@
-.navbar-toggler {
-  border: none !important;
-  background: none !important;
-  box-shadow: none !important;
-  padding: 0.25rem 0.5rem !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Your colored header background */
+
+/* Clean toggle button */
+:global(.navbar-dark .navbar-toggler) {
+  border: 0;
+  box-shadow: none;
+  padding: 0;
 }
 
-.navbar-toggler-icon {
-  background-image: none !important;
-  position: relative;
-  width: 28px;
-  height: 22px;
+/* Draw 3 white lines (middle + top/bottom via box-shadow) */
+:global(.navbar-dark .navbar-toggler-icon) {
+  background-image: none !important; /* remove Bootstrap SVG */
+  width: 24px;
+  height: 4px;
   display: inline-block;
+  background-color: #fff;            /* middle line */
+  border-radius: 2px;
+  box-shadow:
+    0 -6px 0 #fff,                   /* top line */
+    0  6px 0 #fff;                   /* bottom line */
 }
 
-.navbar-toggler-icon span,
+/* Make brand & nav links white too */
+:global(.navbar-dark .navbar-brand),
+:global(.navbar-dark .nav-link),
+:global(.navbar-dark .dropdown-toggle) {
+  color: #fff !important;
+}
+
+/* .navbar-toggler-icon span,
 .navbar-toggler-icon::before,
 .navbar-toggler-icon::after {
   content: '';
@@ -34,7 +41,7 @@
 
 .navbar-toggler-icon span {
   margin: 0;
-} 
+}  */
 
 /* ====== HEADER (Navbar) ====== */
 .headerNavbar {
@@ -44,6 +51,7 @@
   min-height: 64px;
   display: flex;
   align-items: center;
+  border: none !important;
 }
 
 .brandLogo :global(img) {

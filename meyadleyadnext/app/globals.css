@@ -147,29 +147,16 @@ body {
 .btn-success:active,
 .btn-primary:active { transform: scale(0.95); box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
 
-/* Toggler של ה-Navbar */
-.navbar-toggler {
-  border-color: #fff !important;
-  box-shadow: none;
-}
-.navbar-toggler:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #fff;
-}
-.navbar-toggler-icon {
-  background-image: none !important;
-  position: relative;
-  width: 1.5em; height: 1.5em;
-  display: inline-block;
-}
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after,
-.navbar-toggler-icon span {
-  content: '';
-  display: block;
-  height: 2px; width: 100%;
-  background: #fff;
-  border-radius: 2px;
-  margin: 5px 0;
-}
-.navbar-toggler-icon span { margin: 0; }
+
+/* .navbar-toggler {
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: white !important;
+} */
