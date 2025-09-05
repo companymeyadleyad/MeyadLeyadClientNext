@@ -30,7 +30,8 @@ export default function AuthHydrator() {
         } else {
           userStore.clearUser();
         }
-      } catch {
+      } catch (error) {
+        console.warn("Auth hydration failed:", error);
         userStore.clearUser();
       } finally {
         if (!cancelled) userStore.setAuthHydrated(true);

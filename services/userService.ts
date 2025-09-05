@@ -8,7 +8,7 @@ import { RegisterResponse } from "../types/LoginAndRegister/Registration/Registe
 import { Authenticate, GetCurrentUser } from "../types/LoginAndRegister/Authenticate/Authenticate";
 import { User } from "@/types/User/User";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || ""; // לדוגמה: "https://api.example.com"
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || ""; // לדוגמה: "https://api.example.com"
 
 export class UserService {
   async login(data: LoginRequest) {
