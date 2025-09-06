@@ -1,0 +1,155 @@
+.container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  direction: rtl;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--site-primary, #1a3b6d) 0%, var(--site-primary-light, #2c5aa0) 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.heroTitle {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Categories Section */
+.categories {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.categoriesContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* CTA Section */
+.cta {
+  background: white;
+  padding: 80px 0;
+  text-align: center;
+  border-top: 1px solid #e9ecef;
+}
+
+.ctaContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ctaTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+}
+
+.ctaSubtitle {
+  font-size: 18px;
+  color: #666;
+  margin: 0 0 40px 0;
+  line-height: 1.6;
+}
+
+.ctaButton {
+  background: var(--site-primary, #1a3b6d);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  background: var(--site-primary-dark, #0f2a4f);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 59, 109, 0.3);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0;
+  }
+  
+  .heroTitle {
+    font-size: 32px;
+  }
+  
+  .heroSubtitle {
+    font-size: 16px;
+  }
+  
+  .categories {
+    padding: 40px 0;
+  }
+  
+  .categoriesContent {
+    padding: 0 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .cta {
+    padding: 60px 0;
+  }
+  
+  .ctaTitle {
+    font-size: 28px;
+  }
+  
+  .ctaSubtitle {
+    font-size: 16px;
+  }
+  
+  .ctaButton {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 28px;
+  }
+  
+  .heroSubtitle {
+    font-size: 14px;
+  }
+  
+  .ctaTitle {
+    font-size: 24px;
+  }
+}

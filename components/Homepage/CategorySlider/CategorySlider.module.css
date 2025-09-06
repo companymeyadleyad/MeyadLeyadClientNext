@@ -1,0 +1,145 @@
+.container {
+  margin-bottom: 48px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.navigation {
+  display: flex;
+  gap: 8px;
+}
+
+.navButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #ddd;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.arrow {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.navButton:hover {
+  background: #f5f5f5;
+  border-color: #999;
+  color: #333;
+  transform: scale(1.05);
+}
+
+.navButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sliderContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.swiper {
+  padding: 0 16px;
+  direction: rtl;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.slide {
+  width: auto !important;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .container {
+    margin-bottom: 32px;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .header {
+    padding: 0 12px;
+    margin-bottom: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+  
+  .navButton {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .swiper {
+    padding: 0 12px;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .slide {
+    width: auto !important;
+    max-width: calc(100vw - 24px);
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 8px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .swiper {
+    padding: 0 8px;
+  }
+  
+  .slide {
+    max-width: calc(100vw - 16px);
+  }
+}
+
+/* RTL specific styles */
+[dir="rtl"] .swiper {
+  direction: rtl;
+}
+
+[dir="rtl"] .slide {
+  direction: rtl;
+}

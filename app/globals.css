@@ -160,3 +160,43 @@ body {
   padding: 0;
   color: white !important;
 } */
+
+/* Prevent horizontal scroll */
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure all containers respect viewport width */
+.container,
+.container-fluid,
+.row,
+.col,
+[class*="col-"] {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* Mobile specific fixes */
+@media (max-width: 768px) {
+  /* .container,
+  .container-fluid {
+    padding-left: 8px;
+    padding-right: 8px;
+  } */
+  
+  * {
+    max-width: 100%;
+  }
+}
