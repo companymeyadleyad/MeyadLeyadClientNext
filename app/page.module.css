@@ -284,8 +284,8 @@
 
 @media (max-width: 480px) {
   .hero {
-    height: 60vh;
-    min-height: 400px;
+    height: 28vh;
+    min-height: 164px;
   }
   
   .heroMain {
