@@ -1,17 +1,21 @@
 .card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 280px;
+  width: 300px;
   flex-shrink: 0;
-  margin: 0 8px;
+  margin: 0 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 .imageContainer {
@@ -31,13 +35,15 @@
 }
 
 .content {
+  background: #1a3b6d;
+  color: white;
   padding: 16px;
 }
 
 .title {
   font-size: 18px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: white;
   margin: 0 0 12px 0;
   line-height: 1.3;
 }
@@ -54,7 +60,8 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: #666;
+  color: white;
+  opacity: 0.8;
 }
 
 .icon {
@@ -64,22 +71,23 @@
 .price {
   font-size: 20px;
   font-weight: 700;
-  color: var(--site-primary, #1a3b6d);
   margin-bottom: 8px;
+  color: #FFD700;
 }
 
 .location {
   font-size: 14px;
-  color: #888;
   font-weight: 500;
+  margin-bottom: 8px;
+  opacity: 0.9;
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
   .card {
-    width: 240px;
-    margin: 0 4px;
-    max-width: calc(100vw - 24px);
+    width: 260px;
+    margin: 0 8px;
+    max-width: calc(100vw - 32px);
   }
   
   .imageContainer {
@@ -87,7 +95,7 @@
   }
   
   .content {
-    padding: 14px;
+    padding: 16px;
   }
   
   .title {
@@ -101,9 +109,9 @@
 
 @media (max-width: 480px) {
   .card {
-    width: 200px;
-    margin: 0 2px;
-    max-width: calc(100vw - 16px);
+    width: 220px;
+    margin: 0 6px;
+    max-width: calc(100vw - 24px);
   }
   
   .imageContainer {
@@ -111,7 +119,7 @@
   }
   
   .content {
-    padding: 12px;
+    padding: 14px;
   }
   
   .title {

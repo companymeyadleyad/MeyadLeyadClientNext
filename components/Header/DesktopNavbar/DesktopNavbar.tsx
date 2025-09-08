@@ -91,8 +91,12 @@ const DesktopNavbar = observer(function DesktopNavbar() {
             onRegister={handleRegister}
           />
 
-          <Button variant="outline-primary" className="btn-success" onClick={handleStartAdPosting}>
-            + פרסום מודעה
+          <Button 
+            variant="outline-primary" 
+            className={`${styles.newPostButton}`} 
+            onClick={handleStartAdPosting}
+          >
+            פרסום חדש
           </Button>
 
           <div className="me-2">
