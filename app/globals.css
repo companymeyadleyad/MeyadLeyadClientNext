@@ -176,6 +176,42 @@ body {
   padding: 0;
 }
 
+/* Main content should be below fixed header */
+main {
+  padding-top: 85px; /* Default header height for desktop */
+}
+
+/* Responsive main padding */
+@media (max-width: 1024px) {
+  main {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 992px) {
+  main {
+    padding-top: 65px;
+  }
+}
+
+@media (max-width: 900px) {
+  main {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 58px;
+  }
+}
+
+@media (max-width: 576px) {
+  main {
+    padding-top: 56px;
+  }
+}
+
 /* Ensure all containers respect viewport width */
 .container,
 .container-fluid,

@@ -63,7 +63,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section>  
 
       {/* Featured Properties Section */}
       {/* <section className={styles.featuredProperties}>

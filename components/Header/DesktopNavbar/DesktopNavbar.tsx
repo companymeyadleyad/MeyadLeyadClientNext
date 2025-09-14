@@ -48,7 +48,7 @@ const DesktopNavbar = observer(function DesktopNavbar() {
     >
       <div className="container-fluid px-4">
         <Link href="/" className={`navbar-brand ${styles.brandLogo}`}>
-          <Image src="/images/logo6.png" alt="Hand to Hand Logo" width={140} height={50} priority />
+          <Image src="/images/logo3.png" alt="Hand to Hand Logo" width={140} height={50} priority />
         </Link>
 
         {/* ... הקטגוריות ... */}

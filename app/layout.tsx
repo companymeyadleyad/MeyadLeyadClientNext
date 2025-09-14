@@ -57,7 +57,7 @@ export default function RootLayout({
         <AuthHydrator />
         <PopupProvider>
           <Header />
-          <main className="container mt-4 nav-footer-spacing">
+          <main>
             {children}
           </main>
           <BottomNavBarGate />

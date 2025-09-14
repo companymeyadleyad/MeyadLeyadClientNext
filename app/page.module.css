@@ -4,6 +4,7 @@
   direction: rtl;
   overflow-x: hidden;
   width: 100%;
+  background-position: center;
 }
 
 /* Hero Section with Background Image */
@@ -17,12 +18,21 @@
 }
 
 .heroBackground {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.9),   /* צבע כהה בחלק העליון */
+      rgba(0, 0, 0, 0.4)    /* צבע כהה בחלק התחתון */
+    ),
+    url('/images/backround-homepage-desktop.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
+  
 }
 
 .heroImage {
@@ -180,7 +190,9 @@
   position: relative;
   z-index: 2;
 }
-
+.categories{
+  background: #e3f2fd;
+}
 .categoriesSliderContainer {
   display: flex;
   flex-direction: column;
