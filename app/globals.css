@@ -178,7 +178,7 @@ body {
 
 /* Main content should be below fixed header */
 main {
-  padding-top: 85px; /* Default header height for desktop */
+  padding-top: 105px; /* Default header height for desktop */
 }
 
 /* Responsive main padding */

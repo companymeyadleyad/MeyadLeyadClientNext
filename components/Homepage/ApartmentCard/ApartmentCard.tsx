@@ -37,51 +37,17 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({ apartment }) => {
           sizes="(max-width: 768px) 280px, 320px"
         />
       </div>
-      
       <div className={styles.content}>
-        <h3 className={styles.title}>{apartment.title}</h3>
-        
-        <div className={styles.details}>
-          <div className={styles.detailItem}>
-            <Image
-              src="/icons/home.svg"
-              alt="חדרים"
-              width={16}
-              height={16}
-              className={styles.icon}
-            />
-            <span>{apartment.rooms} חדרים</span>
-          </div>
-          
-          <div className={styles.detailItem}>
-            <Image
-              src="/icons/stairs.svg"
-              alt="קומה"
-              width={16}
-              height={16}
-              className={styles.icon}
-            />
-            <span>קומה {apartment.floor}</span>
-          </div>
-          
-          <div className={styles.detailItem}>
-            <Image
-              src="/icons/area.svg"
-              alt="מטרים"
-              width={16}
-              height={16}
-              className={styles.icon}
-            />
-            <span>{apartment.meters} מ&quot;ר</span>
-          </div>
-        </div>
-        
-        <div className={styles.price}>
+        <div className={styles.title}>
           {formatPrice(apartment.price)}
         </div>
-        
         <div className={styles.location}>
           {apartment.location}
+        </div>
+        <div className={styles.propertyDetails}>
+          <div>{apartment.rooms} חדרים |&nbsp;</div>
+          <div>{apartment.meters} מטר |&nbsp;</div>
+          <div>{apartment.floor} קומה </div>
         </div>
       </div>
     </div>

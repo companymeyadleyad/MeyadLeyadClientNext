@@ -1,10 +1,9 @@
 .card {
-  background: white;
+  background: #1a3b6d;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 300px;
+  /* width: 300px; */
   flex-shrink: 0;
   margin: 0 12px;
   backdrop-filter: blur(10px);
@@ -13,16 +12,15 @@
   z-index: 2;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
 
 .imageContainer {
   position: relative;
-  width: 100%;
-  height: 200px;
+  width: 96%;
+  max-width: 206px;
+  height: 130px;
   overflow: hidden;
+  margin: 5px auto;
+  border-radius: 10px;
 }
 
 .image {
@@ -43,9 +41,12 @@
 .title {
   font-size: 18px;
   font-weight: 600;
-  color: white;
+  color: #c89b4c;
   margin: 0 0 12px 0;
   line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .details {
@@ -80,8 +81,28 @@
   font-weight: 500;
   margin-bottom: 8px;
   opacity: 0.9;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+.propertyDetails {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  gap: 2px;
+  text-align: center;
+}
+
+.propertyDetails div {
+  flex-shrink: 0;
+  width: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+  color: white;
+  opacity: 0.8;
+}
 /* Mobile styles */
 @media (max-width: 768px) {
   .card {
@@ -100,6 +121,7 @@
   
   .title {
     font-size: 16px;
+    color: #c89b4c;
   }
   
   .price {

@@ -13,7 +13,7 @@ export const mockCategories: Category[] = [
         floor: 5,
         meters: 85,
         price: 1200000,
-        location: "תל אביב",
+        location: "רב המנונא 6 בית שמש",
         category: "3-rooms"
       },
       {
@@ -24,7 +24,7 @@ export const mockCategories: Category[] = [
         floor: 3,
         meters: 90,
         price: 1350000,
-        location: "רמת גן",
+        location: "רב המנונא 6 בית שמש",
         category: "3-rooms"
       },
       {
@@ -35,7 +35,7 @@ export const mockCategories: Category[] = [
         floor: 8,
         meters: 75,
         price: 1100000,
-        location: "חולון",
+        location: "רב המנונא 6 בית שמש",
         category: "3-rooms"
       },
       {
@@ -46,7 +46,7 @@ export const mockCategories: Category[] = [
         floor: 12,
         meters: 95,
         price: 1800000,
-        location: "הרצליה",
+        location: "רב המנונא 6 בית שמש",
         category: "3-rooms"
       }
     ]
@@ -63,18 +63,18 @@ export const mockCategories: Category[] = [
         floor: 2,
         meters: 120,
         price: 1600000,
-        location: "פתח תקווה",
+        location: "רב המנונא 6 בית שמש",
         category: "4-rooms"
       },
       {
         id: "apt-6",
         title: "דירה עם גינה פרטית",
-        image: "https://images.unsplash.com/photo-1570129477492-45c01edd7974?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        image: "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
         rooms: 4,
         floor: 1,
         meters: 140,
         price: 1750000,
-        location: "רעננה",
+        location: "רב המנונא 6 בית שמש",
         category: "4-rooms"
       },
       {
@@ -96,7 +96,7 @@ export const mockCategories: Category[] = [
         floor: 10,
         meters: 130,
         price: 1900000,
-        location: "תל אביב",
+        location: "רב המנונא 6 בית שמש",
         category: "4-rooms"
       }
     ]
@@ -113,7 +113,7 @@ export const mockCategories: Category[] = [
         floor: 15,
         meters: 180,
         price: 2800000,
-        location: "תל אביב",
+        location: "רב המנונא 6 בית שמש",
         category: "5-plus-rooms"
       },
       {
@@ -124,7 +124,7 @@ export const mockCategories: Category[] = [
         floor: 4,
         meters: 200,
         price: 2500000,
-        location: "הרצליה",
+        location: "רב המנונא 6 בית שמש",
         category: "5-plus-rooms"
       },
       {
@@ -135,7 +135,7 @@ export const mockCategories: Category[] = [
         floor: 1,
         meters: 160,
         price: 2200000,
-        location: "רמת השרון",
+        location: "רב המנונא 6 בית שמש",
         category: "5-plus-rooms"
       }
     ]
