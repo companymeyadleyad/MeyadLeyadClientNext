@@ -1,5 +1,3 @@
-"use client";
-
 import { postData, getData, deleteData } from "./apiService";
 import { AddPropertyModel } from "../types/Property/AddPropertyModel";
 import {
@@ -10,6 +8,7 @@ import { ImageListPostResponse } from "../types/Property/ImageListPostResponse";
 import { PropertyDetailDto } from "../types/Property/PropertyDetailDto";
 import { PropertyDetailDtoResponse } from "../types/Property/PropertyDetailDtoResponse";
 import { PropertyGroupDto } from "../types/Property/PropertyGroupDto";
+import { getMockPropertyById } from "../data/mockPropertyDetails";
 
 export class PropertyService {
   addProperty = async (property: AddPropertyModel): Promise<boolean | null> => {
@@ -115,4 +114,25 @@ export class PropertyService {
       return null;
     }
   };
+
+  getPropertyById = async (id: string): Promise<PropertyDetailDto | null> => {
+    // Use mock data for now
+    return getMockPropertyById(id);
+    
+    // Original API call (commented out for now)
+    // const endpoint = `/Properties/get-property-details/${id}`;
+    // try {
+    //   const response = await getData<PropertyDetailDtoResponse>(endpoint);
+    //   return response?.data?.[0] || null;
+    // } catch (error: unknown) {
+    //   console.error("Error fetching property details:", error);
+    //   return null;
+    // }
+  };
 }
+
+const propertyService = new PropertyService();
+
+export const getPropertyById = async (id: string) => {
+  return await propertyService.getPropertyById(id);
+};

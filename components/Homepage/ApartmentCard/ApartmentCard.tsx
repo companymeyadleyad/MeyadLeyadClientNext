@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styles from "./ApartmentCard.module.css";
 
 interface ApartmentCardProps {
@@ -18,6 +19,8 @@ interface ApartmentCardProps {
 }
 
 const ApartmentCard: React.FC<ApartmentCardProps> = ({ apartment }) => {
+  const router = useRouter();
+
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('he-IL', {
       style: 'currency',
@@ -26,8 +29,12 @@ const ApartmentCard: React.FC<ApartmentCardProps> = ({ apartment }) => {
     }).format(price);
   };
 
+  const handleCardClick = () => {
+    router.push(`/property-details/${apartment.id}`);
+  };
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={handleCardClick}>
       <div className={styles.imageContainer}>
         <Image
           src={apartment.image}

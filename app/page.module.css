@@ -18,9 +18,10 @@
 }
 
 .heroBackground {
+  background-color: #1a3b6d; /* Fallback color */
   background-image: linear-gradient(
-      rgba(0, 0, 0, 0.9),   /* צבע כהה בחלק העליון */
-      rgba(0, 0, 0, 0.4)    /* צבע כהה בחלק התחתון */
+      rgba(0, 0, 0, 0.7),   /* צבע כהה בחלק העליון */
+      rgba(0, 0, 0, 0.3)    /* צבע כהה בחלק התחתון */
     ),
     url('/images/backround-homepage-desktop.jpg');
   background-size: cover;
@@ -192,6 +193,7 @@
 }
 .categories{
   background: #e3f2fd;
+  padding: 40px 0;
 }
 .categoriesSliderContainer {
   display: flex;

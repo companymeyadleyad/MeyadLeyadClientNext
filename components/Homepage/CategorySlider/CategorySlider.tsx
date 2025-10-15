@@ -63,11 +63,11 @@ const CategorySlider: React.FC<CategorySliderProps> = ({ title, apartments }) =>
       <div className={styles.sliderContainer}>
         <Swiper
           modules={[Navigation, Pagination]}
-          // spaceBetween={16}
+          spaceBetween={16}
           slidesPerView="auto"
-          // onSwiper={(swiper) => {
-          //   swiperRef.current = swiper;
-          // }}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
           className={styles.swiper}
           dir="rtl"
         >

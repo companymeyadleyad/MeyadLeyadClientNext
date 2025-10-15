@@ -12,4 +12,5 @@ export interface PropertyDetailDto {
   isMediation: boolean;
   imageColumnSpan: number;
   imageUrl: string | null;
+  additionalImages?: string[];
 };
