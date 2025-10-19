@@ -1,0 +1,251 @@
+.categoryPage {
+  direction: rtl;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.headerSection {
+  background: transparent;
+  color: #1a3b6d;
+  padding: 2rem 0;
+}
+
+.pageTitle {
+  text-align: center;
+}
+
+.pageTitle h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a3b6d;
+  position: relative;
+  padding-right: 20px;
+  transition: all 0.3s ease;
+}
+
+.pageTitle p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
+}
+
+.searchFilterBar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.searchInput {
+  margin-bottom: 1rem;
+}
+
+.searchField {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background: white;
+  color: #333;
+}
+
+.searchField:focus {
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  border-color: #667eea;
+}
+
+.searchIcon {
+  background: #667eea;
+  border: none;
+  color: white;
+  border-radius: 0 8px 8px 0;
+}
+
+.filterButtons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.filterToggle,
+.clearFilters {
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.filterToggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.filterToggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.clearFilters {
+  background: rgba(220, 53, 69, 0.2);
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  color: white;
+}
+
+.clearFilters:hover {
+  background: rgba(220, 53, 69, 0.3);
+  border-color: rgba(220, 53, 69, 0.5);
+  color: white;
+}
+
+.mainContent {
+  padding: 0 1rem;
+}
+
+.mapSection {
+  padding-left: 1rem;
+}
+
+.propertiesSection {
+  padding-right: 1rem;
+}
+
+
+.mapContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 600px;
+  position: sticky;
+  top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .mapSection,
+  .propertiesSection {
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .mapContainer {
+    height: 400px;
+    position: static;
+  }
+  
+  .pageTitle h1 {
+    font-size: 2rem;
+  }
+  
+  .pageTitle p {
+    font-size: 1rem;
+  }
+  
+  .searchFilterBar {
+    padding: 1rem;
+  }
+  
+  .filterButtons {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .mapSection {
+    margin-bottom: 2rem;
+  }
+  
+  .mapContainer {
+    height: 500px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .headerSection {
+    padding: 1.5rem 0;
+  }
+  
+  .pageTitle h1 {
+    font-size: 1.75rem;
+  }
+  
+  .searchFilterBar {
+    padding: 0.75rem;
+  }
+  
+  .filterButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .filterToggle,
+  .clearFilters {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .filterButtonsRow {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .filterButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Animation for filter panel */
+.filterPanel {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading states */
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Property grid styles */
+.propertyGrid {
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.propertyGrid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.propertyGrid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.propertyGrid::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.propertyGrid::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+

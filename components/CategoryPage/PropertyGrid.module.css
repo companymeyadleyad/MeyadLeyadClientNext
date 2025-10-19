@@ -1,0 +1,212 @@
+.propertyGrid {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.resultsHeader h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.resultsCount {
+  background: #667eea;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.propertiesList {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.propertiesList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.propertiesList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.propertiesList::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.propertiesList::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.propertyCardWrapper {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive grid for different screen sizes */
+@media (min-width: 1500px) {
+  .propertyCardWrapper {
+    flex: 0 0 25%; /* 4 columns on screens wider than 1500px */
+    max-width: 25%;
+  }
+}
+
+@media (max-width: 1499px) and (min-width: 768px) {
+  .propertyCardWrapper {
+    flex: 0 0 33.333%; /* 3 columns on screens between 768px and 1499px */
+    max-width: 33.333%;
+  }
+}
+
+.filterButtonsRow {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0;
+  direction: ltr;
+}
+
+.filterButton {
+  background: white;
+  border: 1px solid #666;
+  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.filterButton:hover {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.filterButton.active {
+  border-color: #007bff;
+  color: #007bff;
+  background: #f8f9ff;
+}
+
+.noResults {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+}
+
+.noResultsIcon {
+  font-size: 3rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.noResults h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.noResults p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 1199.98px) {
+  .propertyCardWrapper {
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .propertyGrid {
+    height: auto;
+    max-height: 500px;
+  }
+  
+  .resultsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .resultsCount {
+    align-self: flex-end;
+  }
+  
+  .propertyCardWrapper {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .propertyCardWrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .propertyGrid {
+    padding: 1rem;
+  }
+  
+  .propertyCardWrapper {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Animation for property cards */
+.propertyCardWrapper {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for multiple cards */
+.propertyCardWrapper:nth-child(1) { animation-delay: 0.1s; }
+.propertyCardWrapper:nth-child(2) { animation-delay: 0.2s; }
+.propertyCardWrapper:nth-child(3) { animation-delay: 0.3s; }
+.propertyCardWrapper:nth-child(4) { animation-delay: 0.4s; }
+.propertyCardWrapper:nth-child(5) { animation-delay: 0.5s; }
+.propertyCardWrapper:nth-child(6) { animation-delay: 0.6s; }
+

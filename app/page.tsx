@@ -108,6 +108,7 @@ export default function Home() {
             <CategorySlider
               key={category.id}
               title={category.name}
+              slug={category.slug}
               apartments={category.apartments}
             />
           ))}

@@ -4,6 +4,7 @@ export const mockCategories: Category[] = [
   {
     id: "3-rooms",
     name: "דירות למכירה",
+    slug: "forsale",
     apartments: [
       {
         id: "apt-1",
@@ -48,12 +49,189 @@ export const mockCategories: Category[] = [
         price: 1800000,
         location: "רב המנונא 6 בית שמש",
         category: "3-rooms"
+      },
+      {
+        id: "apt-9",
+        title: "דירה חדשה עם מרפסת",
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 4,
+        meters: 88,
+        price: 1250000,
+        location: "הרצוג 112 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-10",
+        title: "דירה מעוצבת בסגנון מינימליסטי",
+        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 7,
+        meters: 82,
+        price: 1150000,
+        location: "אביי 21 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-11",
+        title: "דירה עם גינה קטנה",
+        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 1,
+        meters: 92,
+        price: 1400000,
+        location: "יגאל אלון 45 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-12",
+        title: "דירה עם מרפסת גדולה ונוף",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 9,
+        meters: 87,
+        price: 1320000,
+        location: "גולדה מאיר 78 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-13",
+        title: "דירה מעוצבת עם מטבח חדש",
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 6,
+        meters: 89,
+        price: 1280000,
+        location: "הרצל 33 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-14",
+        title: "דירה עם חניה פרטית",
+        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 3,
+        meters: 94,
+        price: 1450000,
+        location: "בן גוריון 67 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-15",
+        title: "דירה חדשה עם מעלית",
+        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 11,
+        meters: 86,
+        price: 1380000,
+        location: "רחוב החלוצים 12 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-16",
+        title: "דירה עם מרפסת שמש",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 5,
+        meters: 91,
+        price: 1350000,
+        location: "הגבעה 89 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-17",
+        title: "דירה מעוצבת עם פרקט",
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 8,
+        meters: 84,
+        price: 1220000,
+        location: "השדרה 56 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-18",
+        title: "דירה עם נוף להרים",
+        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 13,
+        meters: 93,
+        price: 1480000,
+        location: "הר הצופים 23 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-19",
+        title: "דירה עם מרפסת גדולה",
+        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 4,
+        meters: 88,
+        price: 1290000,
+        location: "הגן 34 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-20",
+        title: "דירה חדשה עם מרפסת שמש",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 10,
+        meters: 90,
+        price: 1420000,
+        location: "הכרמל 77 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-21",
+        title: "דירה עם גינה פרטית קטנה",
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 2,
+        meters: 96,
+        price: 1520000,
+        location: "הגליל 45 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-22",
+        title: "דירה מעוצבת עם מטבח חדש",
+        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 7,
+        meters: 85,
+        price: 1260000,
+        location: "הנגב 88 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-23",
+        title: "דירה עם מרפסת ונוף לים",
+        image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 15,
+        meters: 97,
+        price: 1650000,
+        location: "החוף 123 בית שמש",
+        category: "3-rooms"
+      },
+      {
+        id: "apt-24",
+        title: "דירה חדשה עם חניה",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80",
+        rooms: 3,
+        floor: 6,
+        meters: 89,
+        price: 1340000,
+        location: "המרכז 67 בית שמש",
+        category: "3-rooms"
       }
     ]
   },
   {
     id: "4-rooms",
     name: "דירות להשכרה",
+    slug: "forrent",
     apartments: [
       {
         id: "apt-5",
@@ -104,6 +282,7 @@ export const mockCategories: Category[] = [
   {
     id: "5-plus-rooms",
     name: "דירות לשבת",
+    slug: "forshabbat",
     apartments: [
       {
         id: "apt-9",
@@ -143,6 +322,7 @@ export const mockCategories: Category[] = [
   {
     id: "luxury",
     name: "פרוייקטים",
+    slug: "projects",
     apartments: [
       {
         id: "apt-12",

@@ -10,6 +10,7 @@ import { categoriesStore } from "@/stores/Categories.store";
 import SystemSelection, {
   type SystemOption,
 } from "@/components/Common/SystemSelection/SystemSelection";
+import { createSlug } from "@/utils/categoryUtils";
 
 const CategorySelectionPage = observer(function CategorySelectionPage() {
   const router = useRouter();
@@ -43,11 +44,12 @@ const CategorySelectionPage = observer(function CategorySelectionPage() {
 
       await categoriesStore.fetchCategoryLevels(Number(optionId));
 
-      if (categoriesStore.isSupportMediation) {
-        router.push("/mediation");
-      } else {
-        router.push("/post-ad");
-      }
+      // Get the category slug from the store or use a fallback
+      const selectedCategory = categoriesStore.categories.find(cat => cat.categoryNumber === Number(optionId));
+      const slug = selectedCategory?.categoryName ? createSlug(selectedCategory.categoryName) : `category-${optionId}`;
+      
+      // Navigate to the new properties structure
+      router.push(`/properties/${slug}`);
     } catch (error) {
       console.error("Error fetching category levels:", error);
     }

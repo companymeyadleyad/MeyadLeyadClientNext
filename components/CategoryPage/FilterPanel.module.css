@@ -1,0 +1,192 @@
+.filterPanel {
+  margin-top: 1rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filterHeader {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.filterHeader h5 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.closeButton {
+  color: #666;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+  color: #333;
+}
+
+.filterBody {
+  padding: 1.5rem;
+}
+
+.filterSelect,
+.filterInput {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.filterSelect:focus,
+.filterInput:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  outline: none;
+}
+
+.filterSelect {
+  background-color: white;
+  cursor: pointer;
+}
+
+.filterInput {
+  background-color: white;
+}
+
+.filterActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.clearButton,
+.applyButton {
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.clearButton {
+  background: white;
+  border: 1px solid #dee2e6;
+  color: #666;
+}
+
+.clearButton:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+  color: #333;
+}
+
+.applyButton {
+  background: #667eea;
+  border: 1px solid #667eea;
+  color: white;
+}
+
+.applyButton:hover {
+  background: #5a6fd8;
+  border-color: #5a6fd8;
+  color: white;
+}
+
+/* Form Labels */
+.form-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .filterBody {
+    padding: 1rem;
+  }
+  
+  .filterActions {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .clearButton,
+  .applyButton {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .filterHeader {
+    padding: 0.75rem 1rem;
+  }
+  
+  .filterHeader h5 {
+    font-size: 1rem;
+  }
+  
+  .filterBody {
+    padding: 0.75rem;
+  }
+  
+  .filterSelect,
+  .filterInput {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .filterActions {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+}
+
+/* Animation for form elements */
+.filterSelect,
+.filterInput {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Stagger animation for form groups */
+.mb-3:nth-child(1) { animation-delay: 0.1s; }
+.mb-3:nth-child(2) { animation-delay: 0.2s; }
+.mb-3:nth-child(3) { animation-delay: 0.3s; }
+.mb-3:nth-child(4) { animation-delay: 0.4s; }
+.mb-3:nth-child(5) { animation-delay: 0.5s; }
+.mb-3:nth-child(6) { animation-delay: 0.6s; }
+
