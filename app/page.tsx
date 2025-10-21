@@ -1,15 +1,43 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import CategorySlider from "@/components/Homepage/CategorySlider/CategorySlider";
 import StructuredData from "@/components/SEO/StructuredData";
-import { mockCategories } from "@/data/mockApartments";
+import { CategoriesService } from "@/services/categoriesService";
+import type { SliderCategory } from "@/types/Homepage/SliderApartment";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const [categories, setCategories] = useState<SliderCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        setLoading(true);
+        const categoriesService = new CategoriesService();
+        const data = await categoriesService.getSlidersHomepage();
+        
+        if (data) {
+          setCategories(data);
+        } else {
+          setError("Failed to load categories");
+        }
+      } catch (err) {
+        console.error("Error fetching categories:", err);
+        setError("Error loading categories");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   // Flatten all apartments for structured data
-  const allApartments = mockCategories.flatMap(category => category.apartments);
+  const allApartments = categories.flatMap(category => category.apartments);
 
   return (
     <div className={styles.container}>
@@ -104,14 +132,20 @@ export default function Home() {
       {/* Categories Section */}
       <section className={styles.categories}>
         <div className={styles.categoriesContent}>
-          {mockCategories.map((category) => (
-            <CategorySlider
-              key={category.id}
-              title={category.name}
-              slug={category.slug}
-              apartments={category.apartments}
-            />
-          ))}
+          {loading ? (
+            <div>Loading...</div>
+          ) : error ? (
+            <div>Error: {error}</div>
+          ) : (
+            categories.map((category) => (
+              <CategorySlider
+                key={category.id}
+                title={category.name}
+                slug={category.slug}
+                apartments={category.apartments}
+              />
+            ))
+          )}
         </div>
       </section>
     </div>

@@ -3,19 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import type { SliderApartment } from "@/types/Homepage/SliderApartment";
 import styles from "./ApartmentCard.module.css";
 
 interface ApartmentCardProps {
-  apartment: {
-    id: string;
-    title: string;
-    image: string;
-    rooms: number;
-    floor: number;
-    meters: number;
-    price: number;
-    location: string;
-  };
+  apartment: SliderApartment;
 }
 
 const ApartmentCard: React.FC<ApartmentCardProps> = ({ apartment }) => {

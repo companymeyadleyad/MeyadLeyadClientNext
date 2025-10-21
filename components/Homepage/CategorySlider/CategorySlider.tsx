@@ -8,22 +8,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import ApartmentCard from "../ApartmentCard/ApartmentCard";
-import { createSlug } from "@/utils/categoryUtils";
+import type { SliderApartment } from "@/types/Homepage/SliderApartment";
 import styles from "./CategorySlider.module.css";
 
 interface CategorySliderProps {
   title: string;
   slug: string;
-  apartments: Array<{
-    id: string;
-    title: string;
-    image: string;
-    rooms: number;
-    floor: number;
-    meters: number;
-    price: number;
-    location: string;
-  }>;
+  apartments: SliderApartment[];
 }
 
 const CategorySlider: React.FC<CategorySliderProps> = ({ title, slug, apartments }) => {

@@ -1,19 +1,10 @@
 "use client";
 
 import React from 'react';
-
-interface Apartment {
-  id: string;
-  title: string;
-  price: number;
-  location: string;
-  rooms: number;
-  meters: number;
-  floor: number;
-}
+import type { SliderApartment } from "@/types/Homepage/SliderApartment";
 
 interface StructuredDataProps {
-  apartments?: Apartment[];
+  apartments?: SliderApartment[];
   property?: {
     cityName: string;
     streetName: string;

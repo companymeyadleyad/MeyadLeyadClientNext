@@ -5,6 +5,7 @@ import type { Category } from "@/types/Categories/Category";
 import type { CategoriesResponse } from "@/types/Categories/CategoriesResponse";
 import type { CategoryLevelsResponse } from "@/types/Categories/CategoryLevelsResponse";
 import type { CategoryStepModel } from "@/types/Categories/CategoryStepModel";
+import type { SliderCategory, SlidersHomepageResponse } from "@/types/Homepage/SliderApartment";
 
 export class CategoriesService {
   async getCategories(): Promise<Category[] | null> {
@@ -25,6 +26,17 @@ export class CategoriesService {
       return res?.data ?? null;
     } catch (err) {
       console.error("Error fetching category levels:", err);
+      return null;
+    }
+  }
+
+  async getSlidersHomepage(): Promise<SliderCategory[] | null> {
+    const endpoint = "/Categories/get-sliders-homepage";
+    try {
+      const res = await getData<SlidersHomepageResponse>(endpoint);
+      return res?.data ?? null;
+    } catch (err) {
+      console.error("Error fetching sliders homepage:", err);
       return null;
     }
   }

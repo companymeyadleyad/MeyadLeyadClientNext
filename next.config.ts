@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: "https",
+        hostname: "img.yad2.co.il",
+        pathname: "/**",
+      }
     ],
   },
 };
