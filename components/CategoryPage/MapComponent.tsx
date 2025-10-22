@@ -81,8 +81,10 @@ const MapComponent = ({ properties }: MapComponentProps) => {
           ref={mapRef} 
           className={styles.mapArea}
           style={{ 
-            background: isMapLoaded ? 'linear-gradient(45deg, #e8f5e8 25%, #f0f8f0 25%, #f0f8f0 50%, #e8f5e8 50%, #e8f5e8 75%, #f0f8f0 75%)' : '#f8f9fa',
-            backgroundSize: '20px 20px'
+            backgroundColor: isMapLoaded ? 'transparent' : '#f8f9fa',
+            backgroundImage: isMapLoaded ? 'linear-gradient(45deg, #e8f5e8 25%, #f0f8f0 25%, #f0f8f0 50%, #e8f5e8 50%, #e8f5e8 75%, #f0f8f0 75%)' : 'none',
+            backgroundSize: '20px 20px',
+            backgroundRepeat: 'repeat'
           }}
         >
           {!isMapLoaded ? (

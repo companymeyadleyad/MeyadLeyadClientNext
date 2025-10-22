@@ -2,7 +2,9 @@ import axios from "axios";
 import { userStore } from "../stores/User.store";
 
 // Create axios instance
-const axiosInstance = axios.create();
+const axiosInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5171/api',
+});
 
 // Add request interceptor to include auth token
 axiosInstance.interceptors.request.use(

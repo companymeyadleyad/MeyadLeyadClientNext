@@ -9,7 +9,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
 // GET
 export const getData = async <T>(endpoint: string): Promise<T> => {
   try {
-    const response = await axiosInstance.get<T>(`${BASE_URL}${endpoint}`);
+    const response = await axiosInstance.get<T>(endpoint);
     return response.data;
   } catch (error) {
     console.error(`Error in getData from ${endpoint}:`, error);
@@ -20,7 +20,7 @@ export const getData = async <T>(endpoint: string): Promise<T> => {
 // POST
 export const postData = async <T>(endpoint: string, data: any): Promise<T> => {
   try {
-    const response = await axiosInstance.post<T>(`${BASE_URL}${endpoint}`, data);
+    const response = await axiosInstance.post<T>(endpoint, data);
     return response.data;
   } catch (error) {
     console.error(`Error in postData to ${endpoint}:`, error);
@@ -31,7 +31,7 @@ export const postData = async <T>(endpoint: string, data: any): Promise<T> => {
 // PUT
 export const putData = async <T>(endpoint: string, data: any): Promise<T> => {
   try {
-    const response = await axiosInstance.put<T>(`${BASE_URL}${endpoint}`, data);
+    const response = await axiosInstance.put<T>(endpoint, data);
     return response.data;
   } catch (error) {
     console.error(`Error in putData to ${endpoint}:`, error);
@@ -42,7 +42,7 @@ export const putData = async <T>(endpoint: string, data: any): Promise<T> => {
 // DELETE
 export const deleteData = async <T>(endpoint: string): Promise<T> => {
   try {
-    const response = await axiosInstance.delete<T>(`${BASE_URL}${endpoint}`);
+    const response = await axiosInstance.delete<T>(endpoint);
     return response.data;
   } catch (error) {
     console.error(`Error in deleteData from ${endpoint}:`, error);

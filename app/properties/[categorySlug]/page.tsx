@@ -6,33 +6,55 @@ import { observer } from "mobx-react-lite";
 import { Container, Spinner } from "react-bootstrap";
 import { categoriesStore } from "@/stores/Categories.store";
 import CategoryPageContent from "@/components/CategoryPage/CategoryPageContent";
-import { mockCategories } from "@/data/mockApartments";
-import { getCategoryBySlug } from "@/utils/categoryUtils";
+import { CategoriesService } from "@/services/categoriesService";
+import type { PropertyListItem } from "@/types/Property/PropertiesListResponse";
 
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     categorySlug: string;
-  };
+  }>;
 }
 
 const CategoryPageInner = observer(function CategoryPageInner({ params }: CategoryPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [categoryData, setCategoryData] = useState<{id: string; name: string; apartments: Array<{id: string; title: string; image: string; rooms: number; floor: number; meters: number; price: number; location: string; category: string}>} | null>(null);
+  const [categoryData, setCategoryData] = useState<{id: string; name: string; apartments: PropertyListItem[]} | null>(null);
 
   useEffect(() => {
     const init = async () => {
       try {
+        // Await params before using them
+        const resolvedParams = await params;
+        
         // Load categories if not already loaded
         if (!categoriesStore.categoriesFetched) {
           await categoriesStore.fetchCategories();
         }
 
-        // Get category data based on slug
-        const category = getCategoryBySlug(params.categorySlug, mockCategories);
-        if (category) {
-          setCategoryData(category);
+        // Get properties list from API
+        const categoriesService = new CategoriesService();
+        const properties = await categoriesService.getPropertiesListByCategory(resolvedParams.categorySlug);
+        
+        if (properties && properties.length > 0) {
+          // Convert PropertyListItem[] to the format expected by CategoryPageContent
+          const apartments = properties.map(property => ({
+            id: property.id,
+            title: property.title,
+            image: property.image,
+            rooms: property.rooms,
+            floor: property.floor,
+            meters: property.meters,
+            price: property.price,
+            location: property.location,
+            category: property.category
+          }));
+
+          setCategoryData({
+            id: resolvedParams.categorySlug,
+            name: properties[0].category, // Use the category from the first property
+            apartments: apartments
+          });
         }
       } catch (error) {
         console.error("Error loading category page:", error);
@@ -42,7 +64,7 @@ const CategoryPageInner = observer(function CategoryPageInner({ params }: Catego
     };
 
     init();
-  }, [params.categorySlug]);
+  }, [params]);
 
   if (isLoading) {
     return (

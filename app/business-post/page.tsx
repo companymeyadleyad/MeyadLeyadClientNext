@@ -14,21 +14,9 @@ const ELEMENTS_PER_PAGE = 18;
 const CELL_HEIGHT = 162.5;
 const GAP = 6;
 
-type Property = {
-  cityName: string;
-  streetName: string;
-  numberOfRoomsName: string;
-  floor: number;
-  propertySizeInMeters: number;
-  isThereOptions: boolean;
-  isThereParcking: boolean;
-  price: number;
-  fullName: string;
-  phone: string;
-  isMediation: boolean;
-  imageColumnSpan: number;
-  imageUrl: string | null;
-};
+import { PropertyDetailDto } from "@/types/Property/PropertyDetailDto";
+
+type Property = PropertyDetailDto;
 
 type CategoryData = {
   categoryId: number;
@@ -50,7 +38,7 @@ function CardElement({ property }: { property: Property }) {
       </div>
 
       <div className={styles.location}>
-        {property.cityName} - {property.streetName}
+        {property.address}
       </div>
 
       <div className={styles.infoLayout}>
@@ -107,10 +95,10 @@ function BusinessPostingInner() {
       const svc = new PropertyService();
       const groups = await svc.getPropertiesList();
       if (groups && Array.isArray(groups)) {
-        const cats: CategoryData[] = groups.map((g: { categoryId: number; categoryName: string; properties: Property[] }) => ({
+        const cats: CategoryData[] = groups.map((g: { categoryId: number; categoryName: string; properties: PropertyDetailDto[] }) => ({
           categoryId: g.categoryId,
           categoryName: g.categoryName,
-          elements: g.properties as Property[],
+          elements: g.properties as PropertyDetailDto[],
           imagePositions: [],
           uploadedImages: [],
         }));
@@ -258,10 +246,10 @@ function BusinessPostingInner() {
       // reload
       const groups = await svc.getPropertiesList();
       if (groups && Array.isArray(groups)) {
-        const cats: CategoryData[] = groups.map((g: { categoryId: number; categoryName: string; properties: Property[] }) => ({
+        const cats: CategoryData[] = groups.map((g: { categoryId: number; categoryName: string; properties: PropertyDetailDto[] }) => ({
           categoryId: g.categoryId,
           categoryName: g.categoryName,
-          elements: g.properties as Property[],
+          elements: g.properties as PropertyDetailDto[],
           imagePositions: [],
           uploadedImages: [],
         }));

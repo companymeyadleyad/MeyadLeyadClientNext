@@ -6,19 +6,30 @@ import type { SliderApartment } from "@/types/Homepage/SliderApartment";
 interface StructuredDataProps {
   apartments?: SliderApartment[];
   property?: {
-    cityName: string;
-    streetName: string;
-    numberOfRoomsName: string;
-    floor: number;
-    propertySizeInMeters: number;
-    isThereOptions: boolean;
-    isThereParcking: boolean;
+    propertyId: number;
     price: number;
+    address: string;
+    numberOfRoomsName: string;
+    propertySizeInMeters: number;
+    floor: number;
+    isThereParcking: boolean;
+    isThereSafeRoom: boolean;
+    isThereWarehouse: boolean;
+    isMediation: boolean;
+    isThereSukaPorch: boolean;
+    isThereOptions: boolean;
+    isThereLandscape: boolean;
+    isTherElevator: boolean;
+    isFurnished: boolean;
+    isThereAirCondition: boolean;
     fullName: string;
     phone: string;
-    isMediation: boolean;
-    imageColumnSpan: number;
-    imageUrl: string | null;
+    // Legacy fields for backward compatibility
+    cityName?: string;
+    streetName?: string;
+    imageColumnSpan?: number;
+    imageUrl?: string | null;
+    additionalImages?: string[];
   };
 }
 
@@ -71,14 +82,22 @@ const StructuredData: React.FC<StructuredDataProps> = ({ apartments, property })
   if (property) {
     const features = [];
     if (property.isThereParcking) features.push('חניה');
-    if (property.isThereOptions) features.push('אפשרויות נוספות');
+    if (property.isTherElevator) features.push('מעלית');
+    if (property.isThereSafeRoom) features.push('ממ"ד');
+    if (property.isThereWarehouse) features.push('מחסן');
+    if (property.isThereSukaPorch) features.push('מרפסת סוכה');
+    if (property.isThereOptions) features.push('אפשרויות הרחבה');
+    if (property.isThereLandscape) features.push('נוף');
+    if (property.isFurnished) features.push('מרוהט');
+    if (property.isThereAirCondition) features.push('מיזוג אוויר');
+    if (property.isMediation) features.push('תיווך');
     
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "RealEstateListing",
-      "name": `${property.streetName} ${property.cityName}`,
-      "description": `נכס למכירה ב${property.streetName} ${property.cityName} - ${property.numberOfRoomsName} חדרים, ${property.propertySizeInMeters} מ"ר, קומה ${property.floor}`,
-      "url": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://meyadleyad.com'}/property-details/${property.cityName}-${property.streetName}`,
+      "name": property.address,
+      "description": `נכס למכירה ב${property.address} - ${property.numberOfRoomsName} חדרים, ${property.propertySizeInMeters} מ"ר, קומה ${property.floor}`,
+      "url": `${process.env.NEXT_PUBLIC_BASE_URL || 'https://meyadleyad.com'}/property-details/${property.propertyId}`,
       "image": property.imageUrl ? [property.imageUrl] : [],
       "offers": {
         "@type": "Offer",
@@ -88,9 +107,8 @@ const StructuredData: React.FC<StructuredDataProps> = ({ apartments, property })
       },
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": `${property.streetName} ${property.cityName}`,
-        "addressCountry": "IL",
-        "addressLocality": property.cityName
+        "streetAddress": property.address,
+        "addressCountry": "IL"
       },
       "floorSize": {
         "@type": "QuantitativeValue",

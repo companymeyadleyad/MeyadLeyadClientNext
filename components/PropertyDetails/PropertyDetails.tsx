@@ -7,19 +7,29 @@ import StructuredData from '@/components/SEO/StructuredData';
 
 interface PropertyDetailsProps {
   property: {
-    cityName: string;
-    streetName: string;
-    numberOfRoomsName: string;
-    floor: number;
-    propertySizeInMeters: number;
-    isThereOptions: boolean;
-    isThereParcking: boolean;
+    propertyId: number;
     price: number;
+    address: string;
+    numberOfRoomsName: string;
+    propertySizeInMeters: number;
+    floor: number;
+    isThereParcking: boolean;
+    isThereSafeRoom: boolean;
+    isThereWarehouse: boolean;
+    isMediation: boolean;
+    isThereSukaPorch: boolean;
+    isThereOptions: boolean;
+    isThereLandscape: boolean;
+    isTherElevator: boolean;
+    isFurnished: boolean;
+    isThereAirCondition: boolean;
     fullName: string;
     phone: string;
-    isMediation: boolean;
-    imageColumnSpan: number;
-    imageUrl: string | null;
+    // Legacy fields for backward compatibility
+    cityName?: string;
+    streetName?: string;
+    imageColumnSpan?: number;
+    imageUrl?: string | null;
     additionalImages?: string[];
   };
 }
@@ -67,20 +77,27 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
 
   const features = [];
   if (property.isThereParcking) features.push('חניה');
-  features.push('מעלית'); // Always show elevator
-  features.push('ממ"ד'); // Always show Mamad
-  features.push('יחידת דיור'); // Always show dwelling unit
-  features.push('גינה'); // Always show garden
-  features.push('מחסן'); // Always show storage
+  if (property.isTherElevator) features.push('מעלית');
+  if (property.isThereSafeRoom) features.push('ממ"ד');
+  if (property.isThereWarehouse) features.push('מחסן');
+  if (property.isThereSukaPorch) features.push('מרפסת סוכה');
+  if (property.isThereOptions) features.push('אפשרויות הרחבה');
+  if (property.isThereLandscape) features.push('נוף');
+  if (property.isFurnished) features.push('מרוהט');
+  if (property.isThereAirCondition) features.push('מיזוג אוויר');
+  if (property.isMediation) features.push('תיווך');
   
   const featuresIcons = {
     'חניה': '🚗',
     'מעלית': '🛗',
     'ממ"ד': '🏠',
-    'יחידת דיור': '🏢',
-    'גינה': '🌳',
     'מחסן': '📦',
-    'אפשרויות נוספות': '✨',
+    'מרפסת סוכה': '🏡',
+    'אפשרויות הרחבה': '✨',
+    'נוף': '🌳',
+    'מרוהט': '🛋️',
+    'מיזוג אוויר': '❄️',
+    'תיווך': '🤝',
   };
 
   return (
@@ -110,7 +127,7 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
 
             {/* Address */}
             <div className={styles.addressContainer}>
-              <h1 className={styles.address}>{property.streetName} {property.cityName}</h1>
+              <h1 className={styles.address}>{property.address}</h1>
             </div>
 
             {/* Property Stats */}
@@ -128,10 +145,10 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
             <div className={styles.descriptionSection}>
               <h2 className={styles.sectionTitle}>תיאור הנכס:</h2>
               <p className={styles.description}>
-                נכס יפה ומושלם ב{property.streetName} {property.cityName}. 
+                נכס יפה ומושלם ב{property.address}. 
                 {property.numberOfRoomsName} חדרים, {property.propertySizeInMeters} מ&quot;ר, קומה {property.floor}.
                 {property.isThereParcking && ' כולל חניה.'}
-                {property.isThereOptions && ' עם אפשרויות נוספות.'}
+                {property.isThereOptions && ' עם אפשרויות הרחבה.'}
               </p>
             </div>
 
@@ -181,7 +198,7 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
               <div className={styles.mainImage} onClick={() => openImageModal(property.imageUrl!)}>
                 <Image
                   src={property.imageUrl}
-                  alt={`${property.streetName} ${property.cityName}`}
+                  alt={`${property.address}`}
                   fill
                   className={styles.image}
                   priority
@@ -199,7 +216,7 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
                   <div key={index} className={styles.thumbnail} onClick={() => openImageModal(imageUrl)}>
                     <Image
                       src={imageUrl}
-                      alt={`${property.streetName} ${property.cityName} - תמונה ${index + 1}`}
+                      alt={`${property.address} - תמונה ${index + 1}`}
                       fill
                       className={styles.image}
                     />
@@ -237,7 +254,7 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({ property }) => {
             </button>
             <Image
               src={selectedImage}
-              alt={`${property.streetName} ${property.cityName} - תמונה מוגדלת`}
+              alt={`${property.address} - תמונה מוגדלת`}
               width={1200}
               height={800}
               className={styles.modalImage}

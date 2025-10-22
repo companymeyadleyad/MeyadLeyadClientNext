@@ -116,18 +116,15 @@ export class PropertyService {
   };
 
   getPropertyById = async (id: string): Promise<PropertyDetailDto | null> => {
-    // Use mock data for now
-    return getMockPropertyById(id);
-    
-    // Original API call (commented out for now)
-    // const endpoint = `/Properties/get-property-details/${id}`;
-    // try {
-    //   const response = await getData<PropertyDetailDtoResponse>(endpoint);
-    //   return response?.data?.[0] || null;
-    // } catch (error: unknown) {
-    //   console.error("Error fetching property details:", error);
-    //   return null;
-    // }
+    const endpoint = `/Properties/get-property-details?PropertyId=${id}`;
+    try {
+      const response = await getData<{ success: boolean; message: string | null; data: PropertyDetailDto }>(endpoint);
+      return response?.data || null;
+    } catch (error: unknown) {
+      console.error("Error fetching property details:", error);
+      // Fallback to mock data if API fails
+      return getMockPropertyById(id);
+    }
   };
 }
 

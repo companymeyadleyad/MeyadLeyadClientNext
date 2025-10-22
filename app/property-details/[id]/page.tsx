@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import PropertyDetails from '@/components/PropertyDetails/PropertyDetails';
-import { getPropertyById } from '@/services/propertyService';
+import { serverPropertyService } from '@/services/serverPropertyService';
 
 interface PropertyDetailsPageProps {
   params: {
@@ -10,7 +10,7 @@ interface PropertyDetailsPageProps {
 }
 
 export async function generateMetadata({ params }: PropertyDetailsPageProps): Promise<Metadata> {
-  const property = await getPropertyById(params.id);
+  const property = await serverPropertyService.getPropertyById(params.id);
   
   if (!property) {
     return {
@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: PropertyDetailsPageProps): Pr
     };
   }
 
-  const title = `${property.fullName} | ${property.streetName} ${property.cityName} | ₪${property.price.toLocaleString()}`;
-  const description = `נכס למכירה ב${property.streetName} ${property.cityName} - ${property.numberOfRoomsName} חדרים, ${property.propertySizeInMeters} מ"ר, קומה ${property.floor}`;
+  const title = `${property.fullName} | ${property.address} | ₪${property.price.toLocaleString()}`;
+  const description = `נכס למכירה ב${property.address} - ${property.numberOfRoomsName} חדרים, ${property.propertySizeInMeters} מ"ר, קומה ${property.floor}`;
 
   return {
     title,
@@ -28,8 +28,7 @@ export async function generateMetadata({ params }: PropertyDetailsPageProps): Pr
     keywords: [
       'נדל"ן',
       'דירה למכירה',
-      property.cityName,
-      property.streetName,
+      property.address,
       `${property.numberOfRoomsName} חדרים`,
       `${property.propertySizeInMeters} מ"ר`,
       'מיד ליד'
@@ -54,7 +53,7 @@ export async function generateMetadata({ params }: PropertyDetailsPageProps): Pr
 }
 
 export default async function PropertyDetailsPage({ params }: PropertyDetailsPageProps) {
-  const property = await getPropertyById(params.id);
+  const property = await serverPropertyService.getPropertyById(params.id);
 
   if (!property) {
     return (

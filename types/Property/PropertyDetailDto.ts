@@ -1,16 +1,26 @@
 export interface PropertyDetailDto {
-  cityName: string;
-  streetName: string;
-  numberOfRoomsName: string;
-  floor: number;
-  propertySizeInMeters: number;
-  isThereOptions: boolean;
-  isThereParcking: boolean;
+  propertyId: number;
   price: number;
+  address: string;
+  numberOfRoomsName: string;
+  propertySizeInMeters: number;
+  floor: number;
+  isThereParcking: boolean;
+  isThereSafeRoom: boolean;
+  isThereWarehouse: boolean;
+  isMediation: boolean;
+  isThereSukaPorch: boolean;
+  isThereOptions: boolean;
+  isThereLandscape: boolean;
+  isTherElevator: boolean;
+  isFurnished: boolean;
+  isThereAirCondition: boolean;
   fullName: string;
   phone: string;
-  isMediation: boolean;
-  imageColumnSpan: number;
-  imageUrl: string | null;
+  // Legacy fields for backward compatibility
+  cityName?: string;
+  streetName?: string;
+  imageColumnSpan?: number;
+  imageUrl?: string | null;
   additionalImages?: string[];
 };

@@ -6,13 +6,14 @@ import { observer } from "mobx-react-lite";
 import { Container, Spinner } from "react-bootstrap";
 import { categoriesStore } from "@/stores/Categories.store";
 import CategoryPageContent from "@/components/CategoryPage/CategoryPageContent";
-import { mockCategories } from "@/data/mockApartments";
+import { CategoriesService } from "@/services/categoriesService";
+import type { PropertyListItem } from "@/types/Property/PropertiesListResponse";
 
 const PropertiesPageContent = observer(function PropertiesPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [allProperties, setAllProperties] = useState<{id: string; name: string; apartments: Array<{id: string; title: string; image: string; rooms: number; floor: number; meters: number; price: number; location: string; category: string}>} | null>(null);
+  const [allProperties, setAllProperties] = useState<{id: string; name: string; apartments: PropertyListItem[]} | null>(null);
 
   useEffect(() => {
     const init = async () => {
@@ -22,19 +23,33 @@ const PropertiesPageContent = observer(function PropertiesPageContent() {
           await categoriesStore.fetchCategories();
         }
 
-        // Combine all properties from all categories
-        const combinedProperties = mockCategories.reduce((acc: Array<{id: string; title: string; image: string; rooms: number; floor: number; meters: number; price: number; location: string; category: string}>, category) => {
-          return [...acc, ...category.apartments];
-        }, [] as Array<{id: string; title: string; image: string; rooms: number; floor: number; meters: number; price: number; location: string; category: string}>);
+        // Get all properties from API (using 'forsale' as default category)
+        const categoriesService = new CategoriesService();
+        const properties = await categoriesService.getPropertiesListByCategory('forsale');
+        
+        if (properties && properties.length > 0) {
+          // Convert PropertyListItem[] to the format expected by CategoryPageContent
+          const apartments = properties.map(property => ({
+            id: property.id,
+            title: property.title,
+            image: property.image,
+            rooms: property.rooms,
+            floor: property.floor,
+            meters: property.meters,
+            price: property.price,
+            location: property.location,
+            category: property.category
+          }));
 
-        // Create a virtual "all properties" category
-        const allPropertiesCategory = {
-          id: "all-properties",
-          name: "כל הנכסים",
-          apartments: combinedProperties
-        };
+          // Create a virtual "all properties" category
+          const allPropertiesCategory = {
+            id: "all-properties",
+            name: "כל הנכסים",
+            apartments: apartments
+          };
 
-        setAllProperties(allPropertiesCategory);
+          setAllProperties(allPropertiesCategory);
+        }
       } catch (error) {
         console.error("Error loading all properties:", error);
       } finally {
