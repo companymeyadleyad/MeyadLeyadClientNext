@@ -85,6 +85,7 @@
   margin-bottom: 1.5rem;
   padding: 0;
   direction: ltr;
+  position: relative;
 }
 
 .filterButton {
@@ -109,6 +110,40 @@
   border-color: #007bff;
   color: #007bff;
   background: #f8f9ff;
+}
+
+.filterCount {
+  background: #007bff;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+  margin-right: 4px;
+}
+
+.arrow {
+  font-size: 10px;
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.propertyTypeContainer {
+  position: relative;
+}
+
+.roomsContainer {
+  position: relative;
+}
+
+.priceContainer {
+  position: relative;
 }
 
 .noResults {

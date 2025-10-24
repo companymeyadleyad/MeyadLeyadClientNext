@@ -1,0 +1,114 @@
+.modalOverlay {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  z-index: 9999;
+  padding: 0;
+  direction: rtl;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  max-width: 500px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  margin-top: 8px;
+  padding: 16px;
+}
+
+.roomsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+}
+
+.roomButton {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.roomButton:hover {
+  background: #f8f9fa;
+  border-color: #d0d0d0;
+  transform: translateY(-1px);
+}
+
+.roomButton.selected {
+  background: white;
+  border: 2px solid #1a3b6d;
+  color: #1a3b6d;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.roomButton.selected:hover {
+  background: #f0f4f8;
+  border-color: #1a3b6d;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .modalOverlay {
+    right: -50px;
+  }
+  
+  .modal {
+    width: 350px;
+    padding: 12px;
+  }
+  
+  .roomButton {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+  
+  .roomsContainer {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalOverlay {
+    right: -100px;
+  }
+  
+  .modal {
+    width: 300px;
+    padding: 10px;
+  }
+  
+  .roomButton {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  
+  .roomsContainer {
+    gap: 4px;
+  }
+}

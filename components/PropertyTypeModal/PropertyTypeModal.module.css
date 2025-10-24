@@ -1,0 +1,216 @@
+.modalOverlay {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  z-index: 9999;
+  padding: 0;
+  direction: rtl;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  max-width: 500px;
+  max-height: 400px;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  margin-top: 8px;
+}
+
+.header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.content {
+  padding: 16px 20px;
+}
+
+.categorySection {
+  margin-bottom: 24px;
+}
+
+.categorySection:last-child {
+  margin-bottom: 0;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.categoryIcon {
+  font-size: 16px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryHeader h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.buttonsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.typeButton {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.typeButton:hover {
+  background: #e9ecef;
+  border-color: #dee2e6;
+  transform: translateY(-1px);
+}
+
+.typeButton.selected {
+  background: #1a3b6d;
+  border-color: #1a3b6d;
+  color: white;
+  box-shadow: 0 2px 8px rgba(26, 59, 109, 0.3);
+}
+
+.typeButton.selected:hover {
+  background: #0f2a4a;
+  border-color: #0f2a4a;
+}
+
+.footer {
+  padding: 16px 20px;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.resetButton {
+  background: white;
+  border: 1px solid #e0e0e0;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.resetButton:hover {
+  background: #f8f9fa;
+  border-color: #d0d0d0;
+  color: #333;
+}
+
+.confirmButton {
+  background: #1a3b6d;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 24px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(26, 59, 109, 0.3);
+}
+
+.confirmButton:hover {
+  background: #0f2a4a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 59, 109, 0.4);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding-top: 20px;
+    align-items: flex-start;
+  }
+  
+  .modal {
+    width: 95%;
+    margin: 0 10px;
+  }
+  
+  .buttonsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+  
+  .typeButton {
+    padding: 10px 12px;
+    font-size: 13px;
+    min-height: 40px;
+  }
+  
+  .footer {
+    flex-direction: column;
+  }
+  
+  .resetButton,
+  .confirmButton {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalOverlay {
+    padding-top: 10px;
+  }
+  
+  .modal {
+    width: 98%;
+    margin: 0 5px;
+  }
+  
+  .buttonsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .typeButton {
+    padding: 8px 10px;
+    font-size: 12px;
+    min-height: 36px;
+  }
+}
