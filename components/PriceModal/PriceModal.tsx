@@ -15,7 +15,7 @@ const PriceModal: React.FC<PriceModalProps> = ({
   isOpen,
   onClose,
   onConfirm,
-  minPrice = 1000000,
+  minPrice = 0,
   maxPrice = 25000000
 }) => {
   const [localMinPrice, setLocalMinPrice] = useState(minPrice);
@@ -23,7 +23,7 @@ const PriceModal: React.FC<PriceModalProps> = ({
   const [isDragging, setIsDragging] = useState<'min' | 'max' | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const minSliderValue = 1000000;
+  const minSliderValue = 0;
   const maxSliderValue = 25000000;
 
   const formatPrice = (price: number) => {
@@ -42,6 +42,11 @@ const PriceModal: React.FC<PriceModalProps> = ({
     return minSliderValue + (percentage / 100) * (maxSliderValue - minSliderValue);
   };
 
+  // Reverse percentage for RTL display (slider goes from right to left)
+  const getReversedPercentage = (percentage: number) => {
+    return 100 - percentage;
+  };
+
   const handleMouseDown = (type: 'min' | 'max') => (e: React.MouseEvent) => {
     setIsDragging(type);
     e.preventDefault();
@@ -51,8 +56,10 @@ const PriceModal: React.FC<PriceModalProps> = ({
     if (!isDragging || !sliderRef.current) return;
 
     const rect = sliderRef.current.getBoundingClientRect();
+    // Reverse the calculation for RTL (right to left)
     const percentage = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-    const value = Math.round(getValueFromPercentage(percentage));
+    const reversedPercentage = 100 - percentage;
+    const value = Math.round(getValueFromPercentage(reversedPercentage));
 
     if (isDragging === 'min') {
       const newMinPrice = Math.min(value, localMaxPrice - 100000);
@@ -106,6 +113,10 @@ const PriceModal: React.FC<PriceModalProps> = ({
 
   const minPercentage = getPercentage(localMinPrice);
   const maxPercentage = getPercentage(localMaxPrice);
+  
+  // Reverse for RTL display (min stays min, max stays max, just visually flipped)
+  const reversedMinPercentage = 100 - minPercentage;
+  const reversedMaxPercentage = 100 - maxPercentage;
 
   return (
     <div className={styles.modalOverlay} onClick={handleBackdropClick}>
@@ -117,22 +128,22 @@ const PriceModal: React.FC<PriceModalProps> = ({
         <div className={styles.sliderContainer}>
           <div className={styles.slider} ref={sliderRef}>
             <div className={styles.sliderTrack} />
-            <div 
+            <div
               className={styles.sliderRange}
               style={{
-                left: `${minPercentage}%`,
-                width: `${maxPercentage - minPercentage}%`
+                left: `${reversedMaxPercentage}%`,
+                width: `${reversedMinPercentage - reversedMaxPercentage}%`
               }}
             />
             <div
-              className={`${styles.sliderThumb} ${styles.minThumb}`}
-              style={{ left: `${minPercentage}%` }}
-              onMouseDown={handleMouseDown('min')}
+              className={`${styles.sliderThumb} ${styles.maxThumb}`}
+              style={{ left: `${reversedMaxPercentage}%` }}
+              onMouseDown={handleMouseDown('max')}
             />
             <div
-              className={`${styles.sliderThumb} ${styles.maxThumb}`}
-              style={{ left: `${maxPercentage}%` }}
-              onMouseDown={handleMouseDown('max')}
+              className={`${styles.sliderThumb} ${styles.minThumb}`}
+              style={{ left: `${reversedMinPercentage}%` }}
+              onMouseDown={handleMouseDown('min')}
             />
           </div>
         </div>

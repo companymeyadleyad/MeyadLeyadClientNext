@@ -5,9 +5,6 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import ApartmentCard from "../Homepage/ApartmentCard/ApartmentCard";
-import PropertyTypeModal from "../PropertyTypeModal/PropertyTypeModal";
-import RoomsModal from "../RoomsModal/RoomsModal";
-import PriceModal from "../PriceModal/PriceModal";
 import styles from "./PropertyGrid.module.css";
 
 interface Property {
@@ -32,13 +29,6 @@ interface PropertyGridProps {
 const PropertyGrid = ({ properties, filters, showFilters, setShowFilters }: PropertyGridProps) => {
   const [filteredProperties, setFilteredProperties] = useState<Property[]>(properties);
   const [isLoading, setIsLoading] = useState(false);
-  const [isPropertyTypeModalOpen, setIsPropertyTypeModalOpen] = useState(false);
-  const [selectedPropertyTypes, setSelectedPropertyTypes] = useState<string[]>([]);
-  const [isRoomsModalOpen, setIsRoomsModalOpen] = useState(false);
-  const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
-  const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
-  const [selectedMinPrice, setSelectedMinPrice] = useState<number>(1000000);
-  const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(25000000);
 
   // Filter properties based on search criteria
   useEffect(() => {
@@ -94,102 +84,6 @@ const PropertyGrid = ({ properties, filters, showFilters, setShowFilters }: Prop
     }, 300);
   }, [properties, filters]);
 
-  const handlePropertyTypeClick = () => {
-    setIsPropertyTypeModalOpen(!isPropertyTypeModalOpen);
-    // Close other modals
-    setIsRoomsModalOpen(false);
-    setIsPriceModalOpen(false);
-  };
-
-  const handlePropertyTypeConfirm = (types: string[]) => {
-    setSelectedPropertyTypes(types);
-    console.log("Selected property types:", types);
-    // כאן תוכל להוסיף לוגיקה נוספת כמו עדכון הפילטרים
-  };
-
-  const handlePropertyTypeClose = () => {
-    setIsPropertyTypeModalOpen(false);
-  };
-
-  const handleRoomsClick = () => {
-    setIsRoomsModalOpen(!isRoomsModalOpen);
-    // Close other modals
-    setIsPropertyTypeModalOpen(false);
-    setIsPriceModalOpen(false);
-  };
-
-  const handleRoomsConfirm = (rooms: string[]) => {
-    setSelectedRooms(rooms);
-    console.log("Selected rooms:", rooms);
-    // כאן תוכל להוסיף לוגיקה נוספת כמו עדכון הפילטרים
-  };
-
-  const handleRoomsClose = () => {
-    setIsRoomsModalOpen(false);
-  };
-
-  const handlePriceClick = () => {
-    setIsPriceModalOpen(!isPriceModalOpen);
-    // Close other modals
-    setIsPropertyTypeModalOpen(false);
-    setIsRoomsModalOpen(false);
-  };
-
-  const handlePriceConfirm = (minPrice: number, maxPrice: number) => {
-    setSelectedMinPrice(minPrice);
-    setSelectedMaxPrice(maxPrice);
-    console.log("Selected price range:", minPrice, "-", maxPrice);
-    // כאן תוכל להוסיף לוגיקה נוספת כמו עדכון הפילטרים
-  };
-
-  const handlePriceClose = () => {
-    setIsPriceModalOpen(false);
-  };
-
-  // פונקציה ליצירת טקסט הכפתור לפי הבחירות
-  const getRoomsButtonText = () => {
-    if (selectedRooms.length === 0) {
-      return "מספר חדרים";
-    }
-    
-    if (selectedRooms.length === 1) {
-      return `${selectedRooms[0]} חדרים`;
-    }
-    
-    // מיון החדרים לפי מספר
-    const sortedRooms = [...selectedRooms].sort((a, b) => {
-      const numA = parseFloat(a.replace('+', ''));
-      const numB = parseFloat(b.replace('+', ''));
-      return numA - numB;
-    });
-    
-    const min = sortedRooms[0];
-    const max = sortedRooms[sortedRooms.length - 1];
-    
-    if (min === max) {
-      return `${min} חדרים`;
-    }
-    
-    return `${min} - ${max} חדרים`;
-  };
-
-  // פונקציה ליצירת טקסט הכפתור למחיר
-  const getPriceButtonText = () => {
-    const formatPrice = (price: number) => {
-      return new Intl.NumberFormat('he-IL', {
-        style: 'currency',
-        currency: 'ILS',
-        minimumFractionDigits: 0,
-      }).format(price);
-    };
-
-    if (selectedMinPrice === 1000000 && selectedMaxPrice === 25000000) {
-      return "מחיר";
-    }
-
-    return `${formatPrice(selectedMinPrice)} - ${formatPrice(selectedMaxPrice)}`;
-  };
-
   if (isLoading) {
     return (
       <div className={styles.loadingContainer}>
@@ -206,83 +100,6 @@ const PropertyGrid = ({ properties, filters, showFilters, setShowFilters }: Prop
         <span className={styles.resultsCount}>
           {filteredProperties.length} נכסים נמצאו
         </span>
-      </div>
-
-      {/* Filter Buttons */}
-      <div className={styles.filterButtonsRow}>
-        <button 
-          className={`${styles.filterButton} ${filters.city ? styles.active : ''}`}
-          onClick={() => {/* Handle city filter */}}
-        >
-          הכנס עיר
-        </button>
-        <div className={styles.propertyTypeContainer}>
-          <button 
-            className={`${styles.filterButton} ${filters.propertyType ? styles.active : ''}`}
-            onClick={handlePropertyTypeClick}
-          >
-            <span className={`${styles.arrow} ${isPropertyTypeModalOpen ? styles.arrowUp : ''}`}>▼</span>
-            סוג הנכס
-            {selectedPropertyTypes.length > 0 && (
-              <span className={styles.filterCount}>{selectedPropertyTypes.length}</span>
-            )}
-          </button>
-          
-          {/* Property Type Modal */}
-          <PropertyTypeModal
-            isOpen={isPropertyTypeModalOpen}
-            onClose={handlePropertyTypeClose}
-            onConfirm={handlePropertyTypeConfirm}
-            selectedTypes={selectedPropertyTypes}
-          />
-        </div>
-        <div className={styles.roomsContainer}>
-          <button 
-            className={`${styles.filterButton} ${filters.rooms ? styles.active : ''}`}
-            onClick={handleRoomsClick}
-          >
-            <span className={`${styles.arrow} ${isRoomsModalOpen ? styles.arrowUp : ''}`}>▼</span>
-            {getRoomsButtonText()}
-            {selectedRooms.length > 0 && (
-              <span className={styles.filterCount}>{selectedRooms.length}</span>
-            )}
-          </button>
-          
-          {/* Rooms Modal */}
-          <RoomsModal
-            isOpen={isRoomsModalOpen}
-            onClose={handleRoomsClose}
-            onConfirm={handleRoomsConfirm}
-            selectedRooms={selectedRooms}
-          />
-        </div>
-        <div className={styles.priceContainer}>
-          <button 
-            className={`${styles.filterButton} ${filters.price ? styles.active : ''}`}
-            onClick={handlePriceClick}
-          >
-            <span className={`${styles.arrow} ${isPriceModalOpen ? styles.arrowUp : ''}`}>▼</span>
-            {getPriceButtonText()}
-            {(selectedMinPrice !== 1000000 || selectedMaxPrice !== 25000000) && (
-              <span className={styles.filterCount}>1</span>
-            )}
-          </button>
-          
-          {/* Price Modal */}
-          <PriceModal
-            isOpen={isPriceModalOpen}
-            onClose={handlePriceClose}
-            onConfirm={handlePriceConfirm}
-            minPrice={selectedMinPrice}
-            maxPrice={selectedMaxPrice}
-          />
-        </div>
-        <button 
-          className={`${styles.filterButton} ${Object.values(filters).some(value => value && value !== '15') ? styles.active : ''}`}
-          onClick={() => setShowFilters(!showFilters)}
-        >
-          פרטים נוספים
-        </button>
       </div>
 
       <div className={styles.propertiesList}>
